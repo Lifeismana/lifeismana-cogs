@@ -1,0 +1,16 @@
+{
+    "author": [
+        "tmerc"
+    ],
+    "install_msg": "ᕮ⊜ᴥ⊜ᕭ",
+    "name": "Lenny",
+    "short": "( ͡° ͜ʖ ͡°)",
+    "description": "乁(-ロ-)ㄏ",
+    "requirements": ["discord-py-slash-command"],
+    "tags": [
+        "lenny",
+        "emoji",
+        "donger",
+        "fun"
+    ]
+}
