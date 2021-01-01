@@ -167,7 +167,7 @@ def protect_against_emojification(text) -> str:
     return res
 
 
-class Mycog(commands.Cog):
+class LennySlash(commands.Cog):
     """My custom cog"""
     def __init__(self, bot):
         if not hasattr(bot, "slash"):
@@ -208,4 +208,5 @@ class Mycog(commands.Cog):
     @cog_ext.cog_slash(name="lenny")
     async def lenny(self, ctx: SlashContext) -> None:
         """☞⇀‿↼☞"""
-        await ctx.send(send_type=3, content=await self.__get_lenny())
+        data = await self.__get_lenny()
+        await ctx.send(send_type=3, content=data)

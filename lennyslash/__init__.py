@@ -1,5 +1,5 @@
-from .mycog import Mycog
+from .lennyslash import LennySlash
 
 
 def setup(bot):
-    bot.add_cog(Mycog(bot))
+    bot.add_cog(LennySlash(bot))
