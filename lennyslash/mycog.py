@@ -1,6 +1,7 @@
 import discord
 from redbot.core.bot import Red
 from redbot.core import commands
+from discord_slash import cog_ext
 from discord_slash import SlashCommand
 from discord_slash import SlashContext
 import aiohttp
@@ -165,23 +166,22 @@ def protect_against_emojification(text) -> str:
 
     return res
 
+
 class Mycog(commands.Cog):
     """My custom cog"""
     def __init__(self, bot):
-        self.bot = bot
-        self.slash = SlashCommand(bot, override_type=True)
+        if not hasattr(bot, "slash"):
+            # Creates new SlashCommand instance to bot if bot doesn't have.
+            bot.slash = SlashCommand(bot, override_type=True)
 
+        self.bot = bot
+        self.bot.slash.get_cog_commands(self)
         self.__url: str = "http://api.lenny.today/v1/random?limit=1"
         self.__session = aiohttp.ClientSession()
         # Cog is only supported by commands ext, so just skip checking type.
-        @self.slash.slash(name="lenny")
-        async def lenny(ctx: SlashContext) -> None:
-            """☞⇀‿↼☞"""
-            await ctx.send(send_type=3,content=await self.__get_lenny())
-
 
     def cog_unload(self) -> None:
-        self.slash.remove()
+        self.bot.slash.remove_cog_commands(self)
         if self.__session:
             asyncio.get_event_loop().create_task(self.__session.close())
 
@@ -203,10 +203,9 @@ class Mycog(commands.Cog):
                 .format(random.choice(LENNY_PARTS["mouths"]))
             )
 
-        return lenny            
+        return lenny
 
-    async def test(self, ctx: SlashContext):
-        await ctx.send(embeds=[discord.Embed(title="lel a slash command")])
-    """ @self.slash.slash(name="test")
-    async def _test(ctx: SlashContext):
-        await ctx.send(content="Hello, World!") """
+    @cog_ext.cog_slash(name="lenny")
+    async def lenny(self, ctx: SlashContext) -> None:
+        """☞⇀‿↼☞"""
+        await ctx.send(send_type=3, content=await self.__get_lenny())
