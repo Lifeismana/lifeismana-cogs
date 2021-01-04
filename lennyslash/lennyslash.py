@@ -208,6 +208,6 @@ class LennySlash(commands.Cog):
     @cog_ext.cog_slash(name="lenny", description='Drop a lenny')
     async def lenny(self, ctx: SlashContext) -> None:
         """☞⇀‿↼☞"""
-        ctx.send(send_type=2)
+        await ctx.send(send_type=2)
         data = await self.__get_lenny()
         await ctx.send(send_type=3, content=data)
