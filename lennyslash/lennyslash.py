@@ -172,7 +172,7 @@ class LennySlash(commands.Cog):
     def __init__(self, bot):
         if not hasattr(bot, "slash"):
             # Creates new SlashCommand instance to bot if bot doesn't have.
-            bot.slash = SlashCommand(bot, override_type=True)
+            bot.slash = SlashCommand(bot, override_type=True, auto_register=True)
 
         self.bot = bot
         self.bot.slash.get_cog_commands(self)
@@ -205,8 +205,9 @@ class LennySlash(commands.Cog):
 
         return lenny
 
-    @cog_ext.cog_slash(name="lenny")
+    @cog_ext.cog_slash(name="lenny", description='Drop a lenny')
     async def lenny(self, ctx: SlashContext) -> None:
         """☞⇀‿↼☞"""
+        ctx.send(send_type=2)
         data = await self.__get_lenny()
         await ctx.send(send_type=3, content=data)
