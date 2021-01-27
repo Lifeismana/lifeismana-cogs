@@ -131,8 +131,8 @@ class DankMemer(commands.Cog):
         user, user2 = user2, user
         # could it be done better ?
         avatars = [
-            await self.get_img(user.avatar_url_as(static_format="png")),
-            await self.get_img(user2.avatar_url_as(static_format="png")),
+            await self.get_img(str(user.avatar_url_as(static_format="png"))),
+            await self.get_img(str(user2.avatar_url_as(static_format="png"))),
         ]
         data = images.bed(self, avatars)
         await self.send_img(ctx, discord.File(data, "bed.png"))
@@ -188,7 +188,7 @@ class DankMemer(commands.Cog):
         user = user or ctx.author
         data = images.byemom(
             self=self,
-            avatar=await self.get_img(user.avatar_url_as(static_format="png")),
+            avatar=await self.get_img(str(user.avatar_url_as(static_format="png"))),
             username=user.name,
             text=text,
         )
@@ -420,7 +420,7 @@ class DankMemer(commands.Cog):
         User is a discord user ID, name or mention.
         """
         user = user or ctx.author
-        data = images.floor(self=self, avatar=await self.get_img(url=user.avatar_url_as(static_format="png")), text=text)
+        data = images.floor(self=self, avatar=await self.get_img(url=str(user.avatar_url_as(static_format="png"))), text=text)
         await self.send_img(ctx, discord.File(data, "floor.png"))
 
     @commands.command()
@@ -444,7 +444,7 @@ class DankMemer(commands.Cog):
 
         User is a discord user ID, name or mention."""
         user = user or ctx.author
-        data = images.garfield(self, await self.get_img(url=user.avatar_url_as(static_format="png")), text)
+        data = images.garfield(self, await self.get_img(url=str(user.avatar_url_as(static_format="png"))), text)
         await self.send_img(ctx, discord.File(data, "garfield.png"))
 
     @commands.command(aliases=["rainbow", "lgbtq"])
@@ -606,7 +606,7 @@ class DankMemer(commands.Cog):
     async def madethis(self, ctx, user: discord.Member, user2: discord.Member = None):
         """I made this!"""
         user2 = user2 or ctx.author
-        users = [await self.get_img(url=user2.avatar_url_as(static_format="png")), await self.get_img(url=user.avatar_url_as(static_format="png"))]
+        users = [await self.get_img(url=str(user2.avatar_url_as(static_format="png"))), await self.get_img(url=str(user.avatar_url_as(static_format="png")))]
         data = images.madethis(self, users)
         await self.send_img(ctx, discord.File(data, "madethis.png"))
 
@@ -687,7 +687,7 @@ class DankMemer(commands.Cog):
         """
         user = user or ctx.author
         data = images.obama(
-            self, await self.get_img(url=user.avatar_url_as(static_format="png")), user.display_name
+            self, await self.get_img(url=str(user.avatar_url_as(static_format="png"))), user.display_name
         )
         await self.send_img(ctx, discord.File(data, "obama.png"))
 
@@ -729,7 +729,7 @@ class DankMemer(commands.Cog):
         """Quote a discord user."""
         user = user or ctx.author
         data = images.quote(
-            self, await self.get_img(url=user.avatar_url_as(static_format="png")), user.name, text
+            self, await self.get_img(url=str(user.avatar_url_as(static_format="png"))), user.name, text
         )
         await self.send_img(ctx, discord.File(data, "quote.png"))
 
@@ -792,8 +792,8 @@ class DankMemer(commands.Cog):
         """
         user2 = user2 or ctx.author
         avatars = [
-            await self.get_img(url=user2.avatar_url_as(static_format="png")),
-            await self.get_img(url=user.avatar_url_as(static_format="png")),
+            await self.get_img(url=str(user2.avatar_url_as(static_format="png"))),
+            await self.get_img(url=str(user.avatar_url_as(static_format="png"))),
         ]
         data = images.screams(self, avatars)
         await self.send_img(ctx, discord.File(data, "screams.png"))
@@ -818,8 +818,8 @@ class DankMemer(commands.Cog):
         """*SLAPS*"""
         user2 = user2 or ctx.author
         avatars = [
-            await self.get_img(url=user2.avatar_url_as(static_format="png")),
-            await self.get_img(url=user.avatar_url_as(static_format="png")),
+            await self.get_img(url=str(user2.avatar_url_as(static_format="png"))),
+            await self.get_img(url=str(user.avatar_url_as(static_format="png"))),
         ]
         data = images.slap(self, avatars)
         await self.send_img(ctx, discord.File(data, "slap.png"))
@@ -844,8 +844,8 @@ class DankMemer(commands.Cog):
         """*spanks*"""
         user2 = user2 or ctx.author
         avatars = [
-            await self.get_img(url=user2.avatar_url_as(static_format="png")),
-            await self.get_img(url=user.avatar_url_as(static_format="png")),
+            await self.get_img(url=str(user2.avatar_url_as(static_format="png"))),
+            await self.get_img(url=str(user.avatar_url_as(static_format="png"))),
         ]
         data = images.spank(self, avatars)
         await self.send_img(ctx, discord.File(data, "spank.png"))
@@ -930,7 +930,7 @@ class DankMemer(commands.Cog):
         """
         user = user or ctx.author
         data = images.tweet(
-            self, await self.get_img(url=user.avatar_url_as(static_format="png")), user.display_name, user.name, text
+            self, await self.get_img(url=str(user.avatar_url_as(static_format="png"))), user.display_name, user.name, text
         )
         await self.send_img(ctx, discord.File(data, "tweet.png"))
 
@@ -953,7 +953,7 @@ class DankMemer(commands.Cog):
     ):
         """Get rid of that pesky teacher."""
         user = user or ctx.author
-        data = images.unpopular(self, await self.get_img(url=user.avatar_url_as(static_format="png")), text)
+        data = images.unpopular(self, await self.get_img(url=str(user.avatar_url_as(static_format="png"))), text)
         await self.send_img(ctx, discord.File(data, "unpopular.png"))
 
     @commands.command()
@@ -1019,7 +1019,7 @@ class DankMemer(commands.Cog):
     ):
         """who this is."""
         user = user or ctx.author
-        data = images.whothisis(self, await self.get_img(url=user.avatar_url_as(static_format="png")), username)
+        data = images.whothisis(self, await self.get_img(url=str(user.avatar_url_as(static_format="png"))), username)
         await self.send_img(ctx, discord.File(data, "whothisis.png"))
 
     @commands.command()
@@ -1038,7 +1038,7 @@ class DankMemer(commands.Cog):
         """Create a youtube comment."""
         user = user or ctx.author
         data = images.youtube(
-            self, await self.get_img(url=user.avatar_url_as(static_format="png")), user.name, text
+            self, await self.get_img(url=str(user.avatar_url_as(static_format="png"))), user.name, text
         )
         await self.send_img(ctx, discord.File(data, "youtube.png"))
 
