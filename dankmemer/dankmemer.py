@@ -77,7 +77,7 @@ class DankMemer(commands.Cog):
     async def abort(self, ctx, image: ImageFinder = None):
         """All the reasons why X was aborted."""
         if image is None:
-            image = ctx.author.avatar_url_as(static_format="png")
+            image = str(ctx.author.avatar_url_as(static_format="png"))
         image = await self.get_img(url=image)
         data = images.aborted(self, image)
         await self.send_img(ctx, discord.File(data,"abort.png"))
@@ -86,7 +86,7 @@ class DankMemer(commands.Cog):
     async def affect(self, ctx, image: ImageFinder = None):
         """It won't affect my baby."""
         if image is None:
-            image = ctx.author.avatar_url_as(static_format="png")
+            image = str(ctx.author.avatar_url_as(static_format="png"))
         image = await self.get_img(url=image)
         data = images.affect(self, image)
         await self.send_img(ctx, discord.File(data,"affect.png"))
@@ -95,7 +95,7 @@ class DankMemer(commands.Cog):
     async def airpods(self, ctx, image: ImageFinder = None):
         """Flex with airpods."""
         if image is None:
-            image = ctx.author.avatar_url_as(static_format="png")
+            image = str(ctx.author.avatar_url_as(static_format="png"))
         image = await self.get_img(url=image)
         data = gif.airpods(self, image)
         await self.send_img(ctx, discord.File(data,"airpods.gif"))
@@ -104,7 +104,7 @@ class DankMemer(commands.Cog):
     async def america(self, ctx, image: ImageFinder = None):
         """Americafy a picture."""
         if image is None:
-            image = ctx.author.avatar_url_as(static_format="png")
+            image = str(ctx.author.avatar_url_as(static_format="png"))
         image = await self.get_img(url=image)
         data = gif.america(self, image)
         await self.send_img(ctx, discord.File(data,"america.gif"))
@@ -141,7 +141,7 @@ class DankMemer(commands.Cog):
     async def bongocat(self, ctx, image: ImageFinder = None):
         """Bongocat-ify your image."""
         if image is None:
-            image = ctx.author.avatar_url_as(static_format="png")
+            image = str(ctx.author.avatar_url_as(static_format="png"))
         image = await self.get_img(url=image)
         data = images.bongocat(self, image)
         await self.send_img(ctx, discord.File(data,"bongocat.png"))
@@ -168,7 +168,7 @@ class DankMemer(commands.Cog):
     async def brazzers(self, ctx, image: ImageFinder = None):
         """Brazzerfy your image."""
         if image is None:
-            image = ctx.author.avatar_url_as(static_format="png")
+            image = str(ctx.author.avatar_url_as(static_format="png"))
         image = await self.get_img(url=image)
         data = images.brazzers(self, image)
         await self.send_img(ctx, discord.File(data, "brazzers.png"))
@@ -198,7 +198,7 @@ class DankMemer(commands.Cog):
     async def cancer(self, ctx, image: ImageFinder = None):
         """Squidward sign."""
         if image is None:
-            image = ctx.author.avatar_url_as(static_format="png")
+            image = str(ctx.author.avatar_url_as(static_format="png"))
         image = await self.get_img(url=image)
         data = images.cancer(self, image)
         await self.send_img(ctx, discord.File(data, "cancer.png"))
@@ -231,7 +231,7 @@ class DankMemer(commands.Cog):
     async def communism(self, ctx, image: ImageFinder = None):
         """Communism-ify your picture."""
         if image is None:
-            image = ctx.author.avatar_url_as(static_format="png")
+            image = str(ctx.author.avatar_url_as(static_format="png"))
         image = await self.get_img(url=image)
         data = gif.communism(self, image)
         await self.send_img(ctx, discord.File(data, "communism.gif"))
@@ -250,7 +250,7 @@ class DankMemer(commands.Cog):
     async def corporate(self, ctx, image: ImageFinder = None):
         """Corporate meme."""
         if image is None:
-            image = ctx.author.avatar_url_as(static_format="png")
+            image = str(ctx.author.avatar_url_as(static_format="png"))
         image = [await self.get_img(url=image)]
         data = images.corporate(self, image)
         await self.send_img(ctx, discord.File(data, "corporate.png"))
@@ -268,7 +268,7 @@ class DankMemer(commands.Cog):
     async def dab(self, ctx, image: ImageFinder = None):
         """Hit a dab."""
         if image is None:
-            image = ctx.author.avatar_url_as(static_format="png")
+            image = str(ctx.author.avatar_url_as(static_format="png"))
         image = await self.get_img(url=image)
         data = images.dab(self, image)
         await self.send_img(ctx, discord.File(data, "dab.png"))
@@ -277,7 +277,7 @@ class DankMemer(commands.Cog):
     async def dank(self, ctx, image: ImageFinder = None):
         """Dank, noscope 420."""
         if image is None:
-            image = ctx.author.avatar_url_as(static_format="png")
+            image = str(ctx.author.avatar_url_as(static_format="png"))
         image = await self.get_img(url=image)
         data = gif.dank(self, image)
         await self.send_img(ctx, discord.File(data, "dank.gif"))
@@ -286,7 +286,7 @@ class DankMemer(commands.Cog):
     async def deepfried(self, ctx, image: ImageFinder = None):
         """Deepfry an image."""
         if image is None:
-            image = ctx.author.avatar_url_as(static_format="png")
+            image = str(ctx.author.avatar_url_as(static_format="png"))
         image = await self.get_img(url=image)
         data = images.deepfry(self, image)
         await self.send_img(ctx, discord.File(data, "deepfry.png"))
@@ -295,7 +295,7 @@ class DankMemer(commands.Cog):
     async def delete(self, ctx, image: ImageFinder = None):
         """Delete Meme."""
         if image is None:
-            image = ctx.author.avatar_url_as(static_format="png")
+            image = str(ctx.author.avatar_url_as(static_format="png"))
         image = await self.get_img(url=image)
         data = images.delete(self, image)
         await self.send_img(ctx, discord.File(data, "delete.png"))
@@ -304,7 +304,7 @@ class DankMemer(commands.Cog):
     async def disability(self, ctx, image: ImageFinder = None):
         """Disability Meme."""
         if image is None:
-            image = ctx.author.avatar_url_as(static_format="png")
+            image = str(ctx.author.avatar_url_as(static_format="png"))
         image = await self.get_img(url=image)
         data = images.disability(self, image)
         await self.send_img(ctx, discord.File(data, "disability.png"))
@@ -322,7 +322,7 @@ class DankMemer(commands.Cog):
     async def door(self, ctx, image: ImageFinder = None):
         """Kick down the door meme."""
         if image is None:
-            image = ctx.author.avatar_url_as(static_format="png")
+            image = str(ctx.author.avatar_url_as(static_format="png"))
         image = await self.get_img(url=image)
         data = images.door(self, image)
         await self.send_img(ctx, discord.File(data, "door.png"))
@@ -331,7 +331,7 @@ class DankMemer(commands.Cog):
     async def egg(self, ctx, image: ImageFinder = None):
         """Turn your picture into an egg."""
         if image is None:
-            image = ctx.author.avatar_url_as(static_format="png")
+            image = str(ctx.author.avatar_url_as(static_format="png"))
         image = await self.get_img(url=image)
         data = images.egg(self, image)
         await self.send_img(ctx, discord.File(data, "egg.png"))
@@ -375,7 +375,7 @@ class DankMemer(commands.Cog):
     async def failure(self, ctx, image: ImageFinder = None):
         """You're a failure meme."""
         if image is None:
-            image = ctx.author.avatar_url_as(static_format="png")
+            image = str(ctx.author.avatar_url_as(static_format="png"))
         image = await self.get_img(url=image)
         data = images.failure(self, image)
         await self.send_img(ctx, discord.File(data, "failure.png"))
@@ -384,7 +384,7 @@ class DankMemer(commands.Cog):
     async def fakenews(self, ctx, image: ImageFinder = None):
         """Fake News."""
         if image is None:
-            image = ctx.author.avatar_url_as(static_format="png")
+            image = str(ctx.author.avatar_url_as(static_format="png"))
         image = await self.get_img(url=image)
         data = images.fakenews(self, image)
         await self.send_img(ctx, discord.File(data, "fakenews.png"))
@@ -402,7 +402,7 @@ class DankMemer(commands.Cog):
     async def fedora(self, ctx, image: ImageFinder = None):
         """*Tips Fedora*."""
         if image is None:
-            image = ctx.author.avatar_url_as(static_format="png")
+            image = str(ctx.author.avatar_url_as(static_format="png"))
         image = await self.get_img(url=image)
         data = images.fedora(self, image)
         await self.send_img(ctx, discord.File(data, "fedora.png"))
@@ -451,7 +451,7 @@ class DankMemer(commands.Cog):
     async def lgbt(self, ctx, image: ImageFinder = None):
         """Rainbow-fy your picture."""
         if image is None:
-            image = ctx.author.avatar_url_as(static_format="png")
+            image = str(ctx.author.avatar_url_as(static_format="png"))
         image = await self.get_img(url=image)
         data = images.gay(self, image)
         await self.send_img(ctx, discord.File(data, "gay.png"))
@@ -466,7 +466,7 @@ class DankMemer(commands.Cog):
     async def goggles(self, ctx, image: ImageFinder = None):
         """Remember, safety goggles on."""
         if image is None:
-            image = ctx.author.avatar_url_as(static_format="png")
+            image = str(ctx.author.avatar_url_as(static_format="png"))
         image = await self.get_img(url=image)
         data = images.goggles(self, image)
         await self.send_img(ctx, discord.File(data, "goggles.png"))
@@ -475,7 +475,7 @@ class DankMemer(commands.Cog):
     async def hitler(self, ctx, image: ImageFinder = None):
         """Worse than hitler?."""
         if image is None:
-            image = ctx.author.avatar_url_as(static_format="png")
+            image = str(ctx.author.avatar_url_as(static_format="png"))
         image = await self.get_img(url=image)
         data = images.hitler(self, image)
         await self.send_img(ctx, discord.File(data, "hitler.png"))
@@ -496,7 +496,7 @@ class DankMemer(commands.Cog):
     async def invertcolour(self, ctx, image: ImageFinder = None):
         """Invert the colour of an image."""
         if image is None:
-            image = ctx.author.avatar_url_as(static_format="png")
+            image = str(ctx.author.avatar_url_as(static_format="png"))
         image = await self.get_img(url=image)
         data = images.invert(image)
         await self.send_img(ctx, discord.File(data, "invert.png"))
@@ -505,7 +505,7 @@ class DankMemer(commands.Cog):
     async def ipad(self, ctx, image: ImageFinder = None):
         """Put your picture on an ipad."""
         if image is None:
-            image = ctx.author.avatar_url_as(static_format="png")
+            image = str(ctx.author.avatar_url_as(static_format="png"))
         image = await self.get_img(url=image)
         data = images.ipad(self, image)
         await self.send_img(ctx, discord.File(data, "ipad.png"))
@@ -514,7 +514,8 @@ class DankMemer(commands.Cog):
     async def jail(self, ctx, image: ImageFinder = None):
         """Send yourself to jail."""
         if image is None:
-            image = ctx.author.avatar_url_as(static_format="png")
+            image = str(ctx.author.avatar_url_as(static_format="png"))
+        ctx.send(image)
         image = await self.get_img(url=image)
         data = images.jail(self, image)
         await self.send_img(ctx, discord.File(data, "jail.png"))
@@ -542,7 +543,7 @@ class DankMemer(commands.Cog):
     async def kimborder(self, ctx, image: ImageFinder = None):
         """Place yourself under mighty kim."""
         if image is None:
-            image = ctx.author.avatar_url_as(static_format="png")
+            image = str(ctx.author.avatar_url_as(static_format="png"))
         image = await self.get_img(url=image)
         data = images.kimborder(self, image)
         await self.send_img(ctx, discord.File(data, "kimborder.png"))
@@ -576,7 +577,7 @@ class DankMemer(commands.Cog):
     async def laid(self, ctx, image: ImageFinder = None):
         """Do you get laid?"""
         if image is None:
-            image = ctx.author.avatar_url_as(static_format="png")
+            image = str(ctx.author.avatar_url_as(static_format="png"))
         image = await self.get_img(url=image)
         data = images.laid(self, image)
         await self.send_img(ctx, discord.File(data, "laid.png"))
@@ -614,7 +615,7 @@ class DankMemer(commands.Cog):
     async def magickify(self, ctx, image: ImageFinder = None):
         """Peform magik."""
         if image is None:
-            image = ctx.author.avatar_url_as(static_format="png")
+            image = str(ctx.author.avatar_url_as(static_format="png"))
         image = await self.get_img(url=image)
         # we don't give it text
         data = images.magik(self, image)
@@ -649,7 +650,7 @@ class DankMemer(commands.Cog):
         Try your luck ;) The default is Impact in white.
         """
         if image is None:
-            image = ctx.author.avatar_url_as(static_format="png")
+            image = str(ctx.author.avatar_url_as(static_format="png"))
         image = await self.get_img(url=image)
         # hmmm i should rewrite that
         if font:
@@ -736,7 +737,7 @@ class DankMemer(commands.Cog):
     async def radialblur(self, ctx, image: ImageFinder = None):
         """Radiarblur-ify your picture.."""
         if image is None:
-            image = ctx.author.avatar_url_as(static_format="png")
+            image = str(ctx.author.avatar_url_as(static_format="png"))
         image = await self.get_img(url=image)
         data = images.radialblur(self, image)
         await self.send_img(ctx, discord.File(data, "radialblur.png"))
@@ -745,7 +746,7 @@ class DankMemer(commands.Cog):
     async def tombstone(self, ctx, image: ImageFinder = None):
         """Give a lucky person a tombstone."""
         if image is None:
-            image = ctx.author.avatar_url_as(static_format="png")
+            image = str(ctx.author.avatar_url_as(static_format="png"))
         image = await self.get_img(url=image)
         data = images.rip(self, image)
         await self.send_img(ctx, discord.File(data, "rip.png"))
@@ -754,7 +755,7 @@ class DankMemer(commands.Cog):
     async def roblox(self, ctx, image: ImageFinder = None):
         """Turn yourself into a roblox character."""
         if image is None:
-            image = ctx.author.avatar_url_as(static_format="png")
+            image = str(ctx.author.avatar_url_as(static_format="png"))
         image = await self.get_img(url=image)
         data = images.roblox(self, image)
         await self.send_img(ctx, discord.File(data, "roblox.png"))
@@ -763,7 +764,7 @@ class DankMemer(commands.Cog):
     async def salty(self, ctx, image: ImageFinder = None):
         """Add some salt."""
         if image is None:
-            image = ctx.author.avatar_url_as(static_format="png")
+            image = str(ctx.author.avatar_url_as(static_format="png"))
         image = await self.get_img(url=image)
         data = images.salty(self, image)
         await self.send_img(ctx, discord.File(data, "salty.gif"))
@@ -772,7 +773,7 @@ class DankMemer(commands.Cog):
     async def satan(self, ctx, image: ImageFinder = None):
         """Place your picture over Satan."""
         if image is None:
-            image = ctx.author.avatar_url_as(static_format="png")
+            image = str(ctx.author.avatar_url_as(static_format="png"))
         image = await self.get_img(url=image)
         data = images.satan(self, image)
         await self.send_img(ctx, discord.File(data, "satan.png"))
@@ -807,7 +808,7 @@ class DankMemer(commands.Cog):
     async def sickban(self, ctx, image: ImageFinder = None):
         """Ban this sick filth!"""
         if image is None:
-            image = ctx.author.avatar_url_as(static_format="png")
+            image = str(ctx.author.avatar_url_as(static_format="png"))
         image = await self.get_img(url=image)
         data = images.sickban(self, image)
         await self.send_img(ctx, discord.File(data, "sickban.png"))
@@ -900,7 +901,7 @@ class DankMemer(commands.Cog):
     async def trash(self, ctx, image: ImageFinder = None):
         """Peter Parker trash."""
         if image is None:
-            image = ctx.author.avatar_url_as(static_format="png")
+            image = str(ctx.author.avatar_url_as(static_format="png"))
         image =  await self.get_img(url=image)
         data = images.trash(self, image)
         await self.send_img(ctx, discord.File(data, "trash.png"))
@@ -909,7 +910,7 @@ class DankMemer(commands.Cog):
     async def trigger(self, ctx, image: ImageFinder = None):
         """Triggerfied."""
         if image is None:
-            image = ctx.author.avatar_url_as(static_format="png")
+            image = str(ctx.author.avatar_url_as(static_format="png"))
         image = await self.get_img(url=image)
         data = gif.trigger(self, image)
         await self.send_img(ctx, discord.File(data, "trigger.gif"))
@@ -937,7 +938,7 @@ class DankMemer(commands.Cog):
     async def ugly(self, ctx, image: ImageFinder = None):
         """Make a user ugly."""
         if image is None:
-            image = ctx.author.avatar_url_as(static_format="png")
+            image = str(ctx.author.avatar_url_as(static_format="png"))
         image = await self.get_img(url=image)
         data = images.ugly(self, image)
         await self.send_img(ctx, discord.File(data, "ugly.png"))
@@ -986,7 +987,7 @@ class DankMemer(commands.Cog):
     async def wanted(self, ctx, image: ImageFinder = None):
         """Heard you're a wanted fugitive?"""
         if image is None:
-            image = ctx.author.avatar_url_as(static_format="png")
+            image = str(ctx.author.avatar_url_as(static_format="png"))
         image = await self.get_img(url=image)
         data = images.wanted(self, image)
         await self.send_img(ctx, discord.File(data, "wanted.png"))
@@ -995,7 +996,7 @@ class DankMemer(commands.Cog):
     async def warp(self, ctx, image: ImageFinder = None):
         """Warp?."""
         if image is None:
-            image = ctx.author.avatar_url_as(static_format="png")
+            image = str(ctx.author.avatar_url_as(static_format="png"))
         image = await self.get_img(url=image)
         data = images.warp(self, image)
         await self.send_img(ctx, discord.File(data, "warp.png"))
@@ -1004,7 +1005,7 @@ class DankMemer(commands.Cog):
     async def whodidthis(self, ctx, image: ImageFinder = None):
         """Who did this?"""
         if image is None:
-            image = ctx.author.avatar_url_as(static_format="png")
+            image = str(ctx.author.avatar_url_as(static_format="png"))
         image = await self.get_img(url=image)
         data = images.whodidthis(self, image)
         await self.send_img(ctx, discord.File(data, "whodidthis.png"))
