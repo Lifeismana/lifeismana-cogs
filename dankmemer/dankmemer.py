@@ -515,7 +515,6 @@ class DankMemer(commands.Cog):
         """Send yourself to jail."""
         if image is None:
             image = str(ctx.author.avatar_url_as(static_format="png"))
-        ctx.send(image)
         image = await self.get_img(url=image)
         data = images.jail(self, image)
         await self.send_img(ctx, discord.File(data, "jail.png"))
