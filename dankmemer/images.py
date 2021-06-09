@@ -13,8 +13,8 @@ from math import ceil
 from redbot.core.data_manager import bundled_data_path
 
 
-def abandon(self, text):
-    base = Image.open(f"{bundled_data_path(self)}/images/abandon.bmp")
+async def abandon(self, text):
+    base = Image.open(f"{bundled_data_path(self)}/images/abandon.png")
     font = ImageFont.truetype(f"{bundled_data_path(self)}/fonts/verdana.ttf", size=24)
     canv = ImageDraw.Draw(base)
     render_text_with_emoji(self, base, canv, (25, 413), wrap(font, text, 320), font, "black")
@@ -26,8 +26,8 @@ def abandon(self, text):
     return b
 
 
-def aborted(self, avatar):
-    base = Image.open(f"{bundled_data_path(self)}/images/aborted.bmp")
+async def aborted(self, avatar):
+    base = Image.open(f"{bundled_data_path(self)}/images/aborted.png")
     img1 = Image.open(avatar).convert("RGBA").resize((90, 90))
     base.paste(img1, (390, 130), img1)
     base = base.convert("RGB")
@@ -38,9 +38,9 @@ def aborted(self, avatar):
     return b
 
 
-def affect(self, avatar):
+async def affect(self, avatar):
     avatar = Image.open(avatar).resize((200, 157)).convert("RGBA")
-    base = Image.open(f"{bundled_data_path(self)}/images/affect.bmp").convert("RGBA")
+    base = Image.open(f"{bundled_data_path(self)}/images/affect.png").convert("RGBA")
 
     base.paste(avatar, (180, 383, 380, 540), avatar)
     base = base.convert("RGB")
@@ -51,8 +51,8 @@ def affect(self, avatar):
     return b
 
 
-def armor(self, text):
-    base = Image.open(f"{bundled_data_path(self)}/images/armor.bmp").convert("RGBA")
+async def armor(self, text):
+    base = Image.open(f"{bundled_data_path(self)}/images/armor.png").convert("RGBA")
     # We need a text layer here for the rotation
     font, text = auto_text_size(
         text, ImageFont.truetype(f"{bundled_data_path(self)}/fonts/sans.ttf"), 207, font_scalar=0.8
@@ -68,8 +68,8 @@ def armor(self, text):
     return b
 
 
-def ballon(self, text):
-    base = Image.open(f"{bundled_data_path(self)}/images/balloon.bmp").convert("RGBA")
+async def ballon(self, text):
+    base = Image.open(f"{bundled_data_path(self)}/images/balloon.png").convert("RGBA")
     font = ImageFont.truetype(f"{bundled_data_path(self)}/fonts/sans.ttf")
     canv = ImageDraw.Draw(base)
 
@@ -103,8 +103,8 @@ def ballon(self, text):
     return b
 
 
-def bed(self, avatars):
-    base = Image.open(f"{bundled_data_path(self)}/images/bed.bmp").convert("RGBA")
+async def bed(self, avatars):
+    base = Image.open(f"{bundled_data_path(self)}/images/bed.png").convert("RGBA")
     avatar = Image.open(avatars[0]).resize((100, 100)).convert("RGBA")
     avatar2 = Image.open(avatars[1]).resize((70, 70)).convert("RGBA")
     avatar_small = avatar.copy().resize((70, 70))
@@ -120,8 +120,8 @@ def bed(self, avatars):
     return b
 
 
-def bongocat(self, avatar):
-    base = Image.open(f"{bundled_data_path(self)}/images/bongocat.bmp").convert("RGBA")
+async def bongocat(self, avatar):
+    base = Image.open(f"{bundled_data_path(self)}/images/bongocat.png").convert("RGBA")
     avatar = Image.open(avatar).resize((750, 750)).convert("RGBA")
 
     avatar.paste(base, (0, 0), base)
@@ -133,8 +133,8 @@ def bongocat(self, avatar):
     return b
 
 
-def boo(self, text):
-    base = Image.open(f"{bundled_data_path(self)}/images/boo.bmp").convert("RGBA")
+async def boo(self, text):
+    base = Image.open(f"{bundled_data_path(self)}/images/boo.png").convert("RGBA")
     # We need a text layer here for the rotation
     canv = ImageDraw.Draw(base)
 
@@ -168,8 +168,8 @@ def boo(self, text):
     return b
 
 
-def brain(self, text):
-    base = Image.open(f"{bundled_data_path(self)}/images/brain.bmp")
+async def brain(self, text):
+    base = Image.open(f"{bundled_data_path(self)}/images/brain.png")
     font = ImageFont.truetype(f"{bundled_data_path(self)}/fonts/verdana.ttf", size=30)
 
     if len(text.split(",")) < 4:
@@ -191,9 +191,9 @@ def brain(self, text):
     return b
 
 
-def brazzers(self, avatar):
+async def brazzers(self, avatar):
     avatar = Image.open(avatar).convert("RGBA")
-    base = Image.open(f"{bundled_data_path(self)}/images/brazzers.bmp")
+    base = Image.open(f"{bundled_data_path(self)}/images/brazzers.png")
     aspect = avatar.width / avatar.height
 
     new_height = int(base.height * aspect)
@@ -213,8 +213,8 @@ def brazzers(self, avatar):
     return b
 
 
-def byemom(self, avatar, text, username):
-    base = Image.open(f"{bundled_data_path(self)}/images/mom.bmp")
+async def byemom(self, avatar, text, username):
+    base = Image.open(f"{bundled_data_path(self)}/images/mom.png")
     avatar = Image.open(avatar).convert("RGBA").resize((70, 70), resample=Image.BICUBIC)
     avatar2 = avatar.copy().resize((125, 125), resample=Image.BICUBIC)
     text_layer = Image.new("RGBA", (350, 25))
@@ -245,8 +245,8 @@ def byemom(self, avatar, text, username):
     return b
 
 
-def cancer(self, avatar):
-    base = Image.open(f"{bundled_data_path(self)}/images/cancer.bmp").convert("RGBA")
+async def cancer(self, avatar):
+    base = Image.open(f"{bundled_data_path(self)}/images/cancer.png").convert("RGBA")
     avatar = Image.open(avatar).resize((100, 100)).convert("RGBA")
 
     base.paste(avatar, (351, 200), avatar)
@@ -258,8 +258,8 @@ def cancer(self, avatar):
     return b
 
 
-def changemymind(self, text):
-    base = Image.open(f"{bundled_data_path(self)}/images/changemymind.bmp").convert("RGBA")
+async def changemymind(self, text):
+    base = Image.open(f"{bundled_data_path(self)}/images/changemymind.png").convert("RGBA")
     # We need a text layer here for the rotation
     text_layer = Image.new("RGBA", base.size)
     font, text = auto_text_size(
@@ -280,8 +280,8 @@ def changemymind(self, text):
     return b
 
 
-def cheating(self, text):
-    base = Image.open(f"{bundled_data_path(self)}/images/cheating.bmp")
+async def cheating(self, text):
+    base = Image.open(f"{bundled_data_path(self)}/images/cheating.png")
     font = ImageFont.truetype(f"{bundled_data_path(self)}/fonts/medium.woff", size=26)
     canv = ImageDraw.Draw(base)
     try:
@@ -301,7 +301,7 @@ def cheating(self, text):
     return b
 
 
-def citation(self, text):
+async def citation(self, text):
     text = text.replace(", ", ",").split(",")
     if len(text) != 3:
         text = [
@@ -309,7 +309,7 @@ def citation(self, text):
             "You must have 3 arguments split by comma",
             "PENALTY ASSESSED - WRONG IMAGE",
         ]
-    base = Image.open(f"{bundled_data_path(self)}/images/citation.bmp")
+    base = Image.open(f"{bundled_data_path(self)}/images/citation.png")
     font = ImageFont.truetype(f"{bundled_data_path(self)}/fonts/bmmini.ttf", size=16)
     canv = ImageDraw.Draw(base)
     text_0 = wrap(font, text[0], 320)
@@ -326,8 +326,8 @@ def citation(self, text):
     return b
 
 
-def confusedcat(self, text):
-    base = Image.open(f"{bundled_data_path(self)}/images/confusedcat.bmp")
+async def confusedcat(self, text):
+    base = Image.open(f"{bundled_data_path(self)}/images/confusedcat.png")
     font = ImageFont.truetype(f"{bundled_data_path(self)}/fonts/medium.woff", size=36)
     canv = ImageDraw.Draw(base)
     try:
@@ -348,7 +348,7 @@ def confusedcat(self, text):
 
 
 # SOMETHING IS WRONG HERE
-def corporate(self, avatars):
+async def corporate(self, avatars):
     base = Image.open(f"{bundled_data_path(self)}/images/corporate.jpg")
     img1 = Image.open(avatars[0]).convert("RGBA").resize((512, 512), Image.LANCZOS)
     try:
@@ -371,8 +371,8 @@ def corporate(self, avatars):
     return b
 
 
-def cry(self, text):
-    base = Image.open(f"{bundled_data_path(self)}/images/cry.bmp")
+async def cry(self, text):
+    base = Image.open(f"{bundled_data_path(self)}/images/cry.png")
     font = ImageFont.truetype(f"{bundled_data_path(self)}/fonts/tahoma.ttf", size=20)
     canv = ImageDraw.Draw(base)
 
@@ -385,8 +385,8 @@ def cry(self, text):
     return b
 
 
-def dab(self, avatar):
-    base = Image.open(f"{bundled_data_path(self)}/images/dab.bmp").convert("RGBA")
+async def dab(self, avatar):
+    base = Image.open(f"{bundled_data_path(self)}/images/dab.png").convert("RGBA")
     avatar = Image.open(avatar).resize((500, 500)).convert("RGBA")
     final_image = Image.new("RGBA", base.size)
 
@@ -400,12 +400,12 @@ def dab(self, avatar):
     return b
 
 
-def deepfry(self, avatar):
+async def deepfry(self, avatar):
     avatar = Image.open(avatar).resize((400, 400)).convert("RGBA")
 
     # noinspection PyPep8
     joy, hand, hundred, fire = [
-        Image.open(f"{bundled_data_path(self)}/images/deepfry_{asset}.bmp")
+        Image.open(f"{bundled_data_path(self)}/images/deepfry_{asset}.png")
         .resize((100, 100))
         .rotate(randint(-30, 30))
         .convert("RGBA")
@@ -429,8 +429,8 @@ def deepfry(self, avatar):
     return b
 
 
-def delete(self, avatar):
-    base = Image.open(f"{bundled_data_path(self)}/images/delete.bmp").convert("RGBA")
+async def delete(self, avatar):
+    base = Image.open(f"{bundled_data_path(self)}/images/delete.png").convert("RGBA")
     avatar = Image.open(avatar).resize((195, 195)).convert("RGBA")
 
     base.paste(avatar, (120, 135), avatar)
@@ -442,9 +442,9 @@ def delete(self, avatar):
     return b
 
 
-def disability(self, avatar):
+async def disability(self, avatar):
     avatar = Image.open(avatar).resize((175, 175)).convert("RGBA")
-    base = Image.open(f"{bundled_data_path(self)}/images/disability.bmp").convert("RGBA")
+    base = Image.open(f"{bundled_data_path(self)}/images/disability.png").convert("RGBA")
 
     base.paste(avatar, (450, 325), avatar)
     base = base.convert("RGBA")
@@ -455,8 +455,8 @@ def disability(self, avatar):
     return b
 
 
-def doglemon(self, text):
-    base = Image.open(f"{bundled_data_path(self)}/images/doglemon.bmp")
+async def doglemon(self, text):
+    base = Image.open(f"{bundled_data_path(self)}/images/doglemon.png")
     font = ImageFont.truetype(f"{bundled_data_path(self)}/fonts/medium.woff", size=30)
     canv = ImageDraw.Draw(base)
     try:
@@ -476,8 +476,8 @@ def doglemon(self, text):
     return b
 
 
-def door(self, avatar):
-    base = Image.open(f"{bundled_data_path(self)}/images/door.bmp").convert("RGBA")
+async def door(self, avatar):
+    base = Image.open(f"{bundled_data_path(self)}/images/door.png").convert("RGBA")
     avatar = Image.open(avatar).resize((479, 479)).convert("RGBA")
     final_image = Image.new("RGBA", base.size)
 
@@ -492,9 +492,9 @@ def door(self, avatar):
     return b
 
 
-def egg(self, avatar):
+async def egg(self, avatar):
     base = (
-        Image.open(f"{bundled_data_path(self)}/images/egg.bmp").resize((350, 350)).convert("RGBA")
+        Image.open(f"{bundled_data_path(self)}/images/egg.png").resize((350, 350)).convert("RGBA")
     )
     avatar = Image.open(avatar).resize((50, 50)).convert("RGBA")
 
@@ -507,8 +507,8 @@ def egg(self, avatar):
     return b
 
 
-def emergencymeeting(self, text):
-    base = Image.open(f"{bundled_data_path(self)}/images/emergencymeeting.bmp")
+async def emergencymeeting(self, text):
+    base = Image.open(f"{bundled_data_path(self)}/images/emergencymeeting.png")
     font = ImageFont.truetype(f"{bundled_data_path(self)}/fonts/medium.woff", size=33)
     canv = ImageDraw.Draw(base)
     if len(text) >= 140:
@@ -523,8 +523,8 @@ def emergencymeeting(self, text):
     return b
 
 
-def excuseme(self, text):
-    base = Image.open(f"{bundled_data_path(self)}/images/excuseme.bmp")
+async def excuseme(self, text):
+    base = Image.open(f"{bundled_data_path(self)}/images/excuseme.png")
 
     font = ImageFont.truetype(f"{bundled_data_path(self)}/fonts/sans.ttf", size=40)
     canv = ImageDraw.Draw(base)
@@ -540,7 +540,7 @@ def excuseme(self, text):
 
 
 # TODO put some MAX_WIDTH
-def expanddong(self, text):
+async def expanddong(self, text):
     text = text[:500]
     lines = ceil((len(text) * 128) / 1920) + 1
     base = Image.new("RGBA", (1920, lines * 128), (255, 255, 255, 0))
@@ -548,8 +548,7 @@ def expanddong(self, text):
     pos = 0
     chars = dict()
     for i in listdir(f"{bundled_data_path(self)}/images/expanddong"):
-        if i.endswith(".bmp"):
-            chars[i[0]] = Image.open(f"{bundled_data_path(self)}/images/expanddong/{i}")
+        chars[i[0]] = Image.open(f"{bundled_data_path(self)}/images/expanddong/{i}")
     for word in text.split(" "):
         if 15 - pos <= len(word):
             pos = 0
@@ -572,7 +571,7 @@ def expanddong(self, text):
     return b
 
 
-def expandingwwe(self, text):
+async def expandingwwe(self, text):
     base = Image.open(f"{bundled_data_path(self)}/images/expandingwwe.jpg")
     font = ImageFont.truetype(f"{bundled_data_path(self)}/fonts/verdana.ttf", size=30)
 
@@ -604,8 +603,8 @@ def expandingwwe(self, text):
     return b
 
 
-def facts(self, text):
-    base = Image.open(f"{bundled_data_path(self)}/images/facts.bmp")
+async def facts(self, text):
+    base = Image.open(f"{bundled_data_path(self)}/images/facts.png")
     # We need to create an image layer here for the rotation
     text_layer = Image.new("RGBA", base.size)
     font = ImageFont.truetype(f"{bundled_data_path(self)}/fonts/verdana.ttf", size=25)
@@ -622,8 +621,8 @@ def facts(self, text):
     return b
 
 
-def failure(self, avatar):
-    base = Image.open(f"{bundled_data_path(self)}/images/failure.bmp").convert("RGBA")
+async def failure(self, avatar):
+    base = Image.open(f"{bundled_data_path(self)}/images/failure.png").convert("RGBA")
     avatar = Image.open(avatar).resize((215, 215)).convert("RGBA")
 
     base.paste(avatar, (143, 525), avatar)
@@ -635,8 +634,8 @@ def failure(self, avatar):
     return b
 
 
-def fakenews(self, avatar):
-    base = Image.open(f"{bundled_data_path(self)}/images/fakenews.bmp").convert("RGBA")
+async def fakenews(self, avatar):
+    base = Image.open(f"{bundled_data_path(self)}/images/fakenews.png").convert("RGBA")
     avatar = Image.open(avatar).resize((400, 400)).convert("RGBA")
     final_image = Image.new("RGBA", base.size)
 
@@ -651,7 +650,7 @@ def fakenews(self, avatar):
     return b
 
 
-def farmer(self, text):
+async def farmer(self, text):
     base = Image.open(f"{bundled_data_path(self)}/images/farmer.jpg")
     font = ImageFont.truetype(f"{bundled_data_path(self)}/fonts/verdana.ttf", size=24)
     canv = ImageDraw.Draw(base)
@@ -673,8 +672,8 @@ def farmer(self, text):
     return b
 
 
-def fedora(self, avatar):
-    base = Image.open(f"{bundled_data_path(self)}/images/fedora.bmp").convert("RGBA")
+async def fedora(self, avatar):
+    base = Image.open(f"{bundled_data_path(self)}/images/fedora.png").convert("RGBA")
     avatar = Image.open(avatar).resize((275, 275)).convert("RGBA")
     final_image = Image.new("RGBA", base.size)
 
@@ -688,8 +687,8 @@ def fedora(self, avatar):
     return b
 
 
-def floor(self, avatar, text):
-    base = Image.open(f"{bundled_data_path(self)}/images/floor.bmp").convert("RGBA")
+async def floor(self, avatar, text):
+    base = Image.open(f"{bundled_data_path(self)}/images/floor.png").convert("RGBA")
     avatar = Image.open(avatar).resize((45, 45)).convert("RGBA")
     avatar2 = avatar.copy().resize((23, 23))
     font = ImageFont.truetype(f"{bundled_data_path(self)}/fonts/sans.ttf", size=22)
@@ -708,7 +707,7 @@ def floor(self, avatar, text):
     return b
 
 
-def fuck(self, text):
+async def fuck(self, text):
     text = text.replace(", ", ",").split(",")
     if len(text) != 2:
         text = ["me not using commas", "you must split the lines with a comma"]
@@ -725,7 +724,7 @@ def fuck(self, text):
     return b
 
 
-def garfield(self, avatar, text):
+async def garfield(self, avatar, text):
 
     base = Image.open(f"{bundled_data_path(self)}/images/garfield_garfield.png").convert("RGB")
     no_entry = (
@@ -750,9 +749,9 @@ def garfield(self, avatar, text):
     return b
 
 
-def gay(self, avatar):
+async def gay(self, avatar):
     img1 = Image.open(avatar).convert("RGBA")
-    img2 = Image.open(f"{bundled_data_path(self)}/gay/gay.bmp").convert("RGBA").resize(img1.size)
+    img2 = Image.open(f"{bundled_data_path(self)}/gay/gay.png").convert("RGBA").resize(img1.size)
     img2.putalpha(128)
     img1.paste(img2, (0, 0), img2)
     img1 = img1.convert("RGB")
@@ -763,7 +762,7 @@ def gay(self, avatar):
     return b
 
 
-def godwhy(self, text):
+async def godwhy(self, text):
     base = Image.open(f"{bundled_data_path(self)}/images/godwhy.png").resize(
         (1061, 1080), Image.LANCZOS
     )
@@ -782,7 +781,7 @@ def godwhy(self, text):
     return b
 
 
-def goggles(self, avatar):
+async def goggles(self, avatar):
     img1 = Image.open(avatar).convert("RGBA")
     base = Image.open(f"{bundled_data_path(self)}/images/goggles.jpg").convert("RGBA")
     img1 = skew.skew(img1, [(32, 297), (171, 295), (180, 456), (41, 463)])
@@ -795,8 +794,8 @@ def goggles(self, avatar):
     return b
 
 
-def hitler(self, avatar):
-    base = Image.open(f"{bundled_data_path(self)}/images/hitler.bmp")
+async def hitler(self, avatar):
+    base = Image.open(f"{bundled_data_path(self)}/images/hitler.png")
     img1 = Image.open(avatar).convert("RGBA").resize((140, 140))
     base.paste(img1, (46, 43), img1)
     base = base.convert("RGB")
@@ -807,8 +806,8 @@ def hitler(self, avatar):
     return b
 
 
-def humansgood(self, text):
-    base = Image.open(f"{bundled_data_path(self)}/images/humansgood.bmp").convert("RGBA")
+async def humansgood(self, text):
+    base = Image.open(f"{bundled_data_path(self)}/images/humansgood.png").convert("RGBA")
     # We need a text layer here for the rotation
     font, text = auto_text_size(
         text, ImageFont.truetype(f"{bundled_data_path(self)}/fonts/sans.ttf"), 125, font_scalar=0.7
@@ -823,7 +822,7 @@ def humansgood(self, text):
     return b
 
 
-def inator(self, text):
+async def inator(self, text):
     base = Image.open(f"{bundled_data_path(self)}/images/inator.jpg")
     font = ImageFont.truetype(f"{bundled_data_path(self)}/fonts/verdana.ttf", size=24)
     canv = ImageDraw.Draw(base)
@@ -845,7 +844,7 @@ def inator(self, text):
     return b
 
 
-def invert(avatar):
+async def invert(avatar):
     avatar = Image.open(avatar)
     if avatar.mode == "RGBA":
         r, g, b, a = avatar.split()
@@ -864,7 +863,7 @@ def invert(avatar):
     return b
 
 
-def ipad(self, avatar):
+async def ipad(self, avatar):
     white = Image.new("RGBA", (2048, 1364), 0x00000000)
     base = Image.open(f"{bundled_data_path(self)}/images/ipad.png")
     img1 = Image.open(avatar).convert("RGBA").resize((512, 512), Image.LANCZOS)
@@ -880,8 +879,8 @@ def ipad(self, avatar):
     return b
 
 
-def jail(self, avatar):
-    overlay = Image.open(f"{bundled_data_path(self)}/images/jail.bmp").resize((350, 350))
+async def jail(self, avatar):
+    overlay = Image.open(f"{bundled_data_path(self)}/images/jail.png").resize((350, 350))
     base = Image.open(avatar).convert("LA").resize((350, 350))
     base.paste(overlay, (0, 0), overlay)
 
@@ -892,7 +891,7 @@ def jail(self, avatar):
     return b
 
 
-def justpretending(self, text):
+async def justpretending(self, text):
     text = text.replace(", ", ",").split(",")
     if len(text) != 2:
         text = ["you should add two things split by commas", "idiot"]
@@ -912,7 +911,7 @@ def justpretending(self, text):
     return b
 
 
-def keepurdistance(self, text):
+async def keepurdistance(self, text):
     base = Image.open(f"{bundled_data_path(self)}/images/keepurdistance.png")
     font = ImageFont.truetype(f"{bundled_data_path(self)}/fonts/MontserratBold.ttf", size=24)
     canv = ImageDraw.Draw(base)
@@ -930,7 +929,7 @@ def keepurdistance(self, text):
     return b
 
 
-def kimborder(self, avatar):
+async def kimborder(self, avatar):
     base = Image.open(f"{bundled_data_path(self)}/images/kimborder.png")
     white = Image.new("RGBA", (base.width, base.height), 0x00000000)
     img1 = Image.open(avatar).convert("RGBA")
@@ -947,8 +946,8 @@ def kimborder(self, avatar):
     return b
 
 
-def knowyourlocation(self, text):
-    base = Image.open(f"{bundled_data_path(self)}/images/knowyourlocation.bmp").convert("RGBA")
+async def knowyourlocation(self, text):
+    base = Image.open(f"{bundled_data_path(self)}/images/knowyourlocation.png").convert("RGBA")
     # We need a text layer here for the rotation
     canv = ImageDraw.Draw(base)
 
@@ -975,8 +974,8 @@ def knowyourlocation(self, text):
     return b
 
 
-def laid(self, avatar):
-    base = Image.open(f"{bundled_data_path(self)}/images/laid.bmp").convert("RGBA")
+async def laid(self, avatar):
+    base = Image.open(f"{bundled_data_path(self)}/images/laid.png").convert("RGBA")
     avatar = Image.open(avatar).resize((115, 115)).convert("RGBA")
     final_image = Image.new("RGBA", base.size)
 
@@ -991,7 +990,7 @@ def laid(self, avatar):
     return b
 
 
-def lick(self, text):
+async def lick(self, text):
     text = text.replace(", ", ",").split(",")
     if len(text) != 2:
         text = ["Dank Memer", "People who do not split with a comma"]
@@ -1008,8 +1007,8 @@ def lick(self, text):
     return b
 
 
-def madethis(self, avatars):
-    base = Image.open(f"{bundled_data_path(self)}/images/madethis.bmp").convert("RGBA")
+async def madethis(self, avatars):
+    base = Image.open(f"{bundled_data_path(self)}/images/madethis.png").convert("RGBA")
     avatar = Image.open(avatars[0]).resize((130, 130)).convert("RGBA")
     avatar2 = Image.open(avatars[1]).resize((111, 111)).convert("RGBA")
     base.paste(avatar, (92, 271), avatar)
@@ -1024,7 +1023,7 @@ def madethis(self, avatars):
     return b
 
 
-def magik(self, avatar, text):
+async def magik(self, avatar, text):
     try:
         img = wandimage.Image(file=avatar)
     except Exception as e:
@@ -1061,8 +1060,8 @@ def magik(self, avatar, text):
     return b
 
 
-def master(self, text):
-    base = Image.open(f"{bundled_data_path(self)}/images/master.bmp").convert("RGBA")
+async def master(self, text):
+    base = Image.open(f"{bundled_data_path(self)}/images/master.png").convert("RGBA")
     text = text.split(",")
     if len(text) == 3:
         a, b, c = text
@@ -1102,7 +1101,7 @@ def master(self, text):
 """
 
 
-def meme(self, avatar, top_text, bottom_text, color, font, altstyle):
+async def meme(self, avatar, top_text, bottom_text, color, font, altstyle):
     img = Image.open(avatar).convert("RGBA")
     factor = int(img.height / 10)
     deffont = font or "impact"
@@ -1210,8 +1209,8 @@ def meme(self, avatar, top_text, bottom_text, color, font, altstyle):
     return b
 
 
-def note(self, text):
-    base = Image.open(f"{bundled_data_path(self)}/images/note.bmp").convert("RGBA")
+async def note(self, text):
+    base = Image.open(f"{bundled_data_path(self)}/images/note.png").convert("RGBA")
     # We need a text layer here for the rotation
     text_layer = Image.new("RGBA", base.size)
     font = ImageFont.truetype(f"{bundled_data_path(self)}/fonts/sans.ttf", size=16)
@@ -1231,8 +1230,8 @@ def note(self, text):
     return b
 
 
-def nothing(self, text):
-    base = Image.open(f"{bundled_data_path(self)}/images/nothing.bmp")
+async def nothing(self, text):
+    base = Image.open(f"{bundled_data_path(self)}/images/nothing.png")
     font = ImageFont.truetype(f"{bundled_data_path(self)}/fonts/medium.woff", size=33)
     canv = ImageDraw.Draw(base)
     text = wrap(font, text, 200)
@@ -1245,7 +1244,7 @@ def nothing(self, text):
     return b
 
 
-def obama(self, avatar, usernames):
+async def obama(self, avatar, usernames):
     base = Image.open(f"{bundled_data_path(self)}/images/obama.jpg")
     font = ImageFont.truetype(f"{bundled_data_path(self)}/fonts/arimobold.ttf", size=36)
     canv = ImageDraw.Draw(base)
@@ -1271,8 +1270,8 @@ def obama(self, avatar, usernames):
     return b
 
 
-def ohno(self, text):
-    base = Image.open(f"{bundled_data_path(self)}/images/ohno.bmp").convert("RGBA")
+async def ohno(self, text):
+    base = Image.open(f"{bundled_data_path(self)}/images/ohno.png").convert("RGBA")
     font = ImageFont.truetype(
         f"{bundled_data_path(self)}/fonts/sans.ttf", size=16 if len(text) > 38 else 32
     )
@@ -1288,8 +1287,8 @@ def ohno(self, text):
     return b
 
 
-def piccolo(self, text):
-    base = Image.open(f"{bundled_data_path(self)}/images/piccolo.bmp")
+async def piccolo(self, text):
+    base = Image.open(f"{bundled_data_path(self)}/images/piccolo.png")
     font = ImageFont.truetype(f"{bundled_data_path(self)}/fonts/medium.woff", size=33)
     canv = ImageDraw.Draw(base)
     text = wrap(font, text, 850)
@@ -1302,8 +1301,8 @@ def piccolo(self, text):
     return b
 
 
-def plan(self, text):
-    base = Image.open(f"{bundled_data_path(self)}/images/plan.bmp").convert("RGBA")
+async def plan(self, text):
+    base = Image.open(f"{bundled_data_path(self)}/images/plan.png").convert("RGBA")
     font = ImageFont.truetype(f"{bundled_data_path(self)}/fonts/sans.ttf", size=16)
     canv = ImageDraw.Draw(base)
 
@@ -1332,8 +1331,8 @@ def plan(self, text):
     return b
 
 
-def presentation(self, text):
-    base = Image.open(f"{bundled_data_path(self)}/images/presentation.bmp")
+async def presentation(self, text):
+    base = Image.open(f"{bundled_data_path(self)}/images/presentation.png")
     font = ImageFont.truetype(f"{bundled_data_path(self)}/fonts/verdana.ttf", size=24)
     canv = ImageDraw.Draw(base)
     text = wrap(font, text, 330)
@@ -1346,7 +1345,7 @@ def presentation(self, text):
     return b
 
 
-def quote(self, avatar, text, usernames):
+async def quote(self, avatar, text, usernames):
     avatar = Image.open(avatar).resize((150, 150))
     base = Image.new("RGBA", (1500, 300))
     font_med = ImageFont.truetype(f"{bundled_data_path(self)}/fonts/medium.woff", size=60)
@@ -1398,7 +1397,7 @@ def quote(self, avatar, text, usernames):
     return b
 
 
-def radialblur(self, avatar):
+async def radialblur(self, avatar):
     output = gm.radial_blur(Image.open(avatar), 15, "png")
 
     b = BytesIO(output)
@@ -1406,9 +1405,9 @@ def radialblur(self, avatar):
     return b
 
 
-def rip(self, avatar):
+async def rip(self, avatar):
     base = (
-        Image.open(f"{bundled_data_path(self)}/images/rip.bmp").convert("RGBA").resize((642, 806))
+        Image.open(f"{bundled_data_path(self)}/images/rip.png").convert("RGBA").resize((642, 806))
     )
     avatar = Image.open(avatar).resize((300, 300)).convert("RGBA")
 
@@ -1421,8 +1420,8 @@ def rip(self, avatar):
     return b
 
 
-def roblox(self, avatar):
-    base = Image.open(f"{bundled_data_path(self)}/images/roblox.bmp").convert("RGBA")
+async def roblox(self, avatar):
+    base = Image.open(f"{bundled_data_path(self)}/images/roblox.png").convert("RGBA")
     avatar = Image.open(avatar).resize((56, 74)).convert("RGBA")
     base.paste(avatar, (168, 41), avatar)
 
@@ -1432,11 +1431,11 @@ def roblox(self, avatar):
     return b
 
 
-def salty(self, avatar):
+async def salty(self, avatar):
     avatar = Image.open(avatar).convert("RGBA").resize((256, 256))
 
     salt = (
-        Image.open(f"{bundled_data_path(self)}/images/salt.bmp")
+        Image.open(f"{bundled_data_path(self)}/images/salt.png")
         .convert("RGBA")
         .resize((256, 256))
         .rotate(-130, resample=Image.BICUBIC)
@@ -1469,8 +1468,8 @@ def salty(self, avatar):
     return b
 
 
-def satan(self, avatar):
-    base = Image.open(f"{bundled_data_path(self)}/images/satan.bmp").convert("RGBA")
+async def satan(self, avatar):
+    base = Image.open(f"{bundled_data_path(self)}/images/satan.png").convert("RGBA")
     avatar = Image.open(avatar).resize((195, 195)).convert("RGBA")
     final_image = Image.new("RGBA", base.size)
 
@@ -1485,8 +1484,8 @@ def satan(self, avatar):
     return b
 
 
-def savehumanity(self, text):
-    base = Image.open(f"{bundled_data_path(self)}/images/humanity.bmp").convert("RGBA")
+async def savehumanity(self, text):
+    base = Image.open(f"{bundled_data_path(self)}/images/humanity.png").convert("RGBA")
     # We need a text layer here for the rotation
     text_layer = Image.new("RGBA", base.size)
     font = ImageFont.truetype(f"{bundled_data_path(self)}/fonts/sans.ttf", size=16)
@@ -1506,8 +1505,8 @@ def savehumanity(self, text):
     return b
 
 
-def screams(self, avatars):
-    base = Image.open(f"{bundled_data_path(self)}/images/screams.bmp").convert("RGBA")
+async def screams(self, avatars):
+    base = Image.open(f"{bundled_data_path(self)}/images/screams.png").convert("RGBA")
     avatar = Image.open(avatars[0]).resize((175, 175)).convert("RGBA")
     avatar2 = Image.open(avatars[1]).resize((156, 156)).convert("RGBA")
     base.paste(avatar, (200, 1), avatar)
@@ -1520,8 +1519,8 @@ def screams(self, avatars):
     return b
 
 
-def shit(self, text):
-    base = Image.open(f"{bundled_data_path(self)}/images/shit.bmp")
+async def shit(self, text):
+    base = Image.open(f"{bundled_data_path(self)}/images/shit.png")
     font = ImageFont.truetype(f"{bundled_data_path(self)}/fonts/segoeuireg.ttf", size=30)
 
     # We need a text layer here for the rotation
@@ -1541,8 +1540,8 @@ def shit(self, text):
     return b
 
 
-def sickban(self, avatar):
-    base = Image.open(f"{bundled_data_path(self)}/images/ban.bmp").convert("RGBA")
+async def sickban(self, avatar):
+    base = Image.open(f"{bundled_data_path(self)}/images/ban.png").convert("RGBA")
     avatar = Image.open(avatar).resize((400, 400)).convert("RGBA")
     base.paste(avatar, (70, 344), avatar)
     base = base.convert("RGBA")
@@ -1553,9 +1552,9 @@ def sickban(self, avatar):
     return b
 
 
-def slap(self, avatars):
+async def slap(self, avatars):
     base = (
-        Image.open(f"{bundled_data_path(self)}/images/batslap.bmp")
+        Image.open(f"{bundled_data_path(self)}/images/batslap.png")
         .resize((1000, 500))
         .convert("RGBA")
     )
@@ -1571,8 +1570,8 @@ def slap(self, avatars):
     return b
 
 
-def slapsroof(self, text):
-    base = Image.open(f"{bundled_data_path(self)}/images/slapsroof.bmp")
+async def slapsroof(self, text):
+    base = Image.open(f"{bundled_data_path(self)}/images/slapsroof.png")
     font = ImageFont.truetype(f"{bundled_data_path(self)}/fonts/medium.woff", size=33)
     canv = ImageDraw.Draw(base)
     suffix = " in it"
@@ -1586,8 +1585,8 @@ def slapsroof(self, text):
     return b
 
 
-def sneakyfox(self, text):
-    base = Image.open(f"{bundled_data_path(self)}/images/sneakyfox.bmp")
+async def sneakyfox(self, text):
+    base = Image.open(f"{bundled_data_path(self)}/images/sneakyfox.png")
     font = ImageFont.truetype(f"{bundled_data_path(self)}/fonts/arimobold.ttf", size=36)
     canv = ImageDraw.Draw(base)
     try:
@@ -1607,8 +1606,8 @@ def sneakyfox(self, text):
     return b
 
 
-def spank(self, avatars):
-    base = Image.open(f"{bundled_data_path(self)}/images/spank.bmp").resize((500, 500))
+async def spank(self, avatars):
+    base = Image.open(f"{bundled_data_path(self)}/images/spank.png").resize((500, 500))
     img1 = Image.open(avatars[0]).resize((140, 140)).convert("RGBA")
     img2 = Image.open(avatars[1]).resize((120, 120)).convert("RGBA")
     base.paste(img1, (225, 5), img1)
@@ -1621,8 +1620,8 @@ def spank(self, avatars):
     return b
 
 
-def stroke(self, text):
-    base = Image.open(f"{bundled_data_path(self)}/images/stroke.bmp")
+async def stroke(self, text):
+    base = Image.open(f"{bundled_data_path(self)}/images/stroke.png")
     font = ImageFont.truetype(f"{bundled_data_path(self)}/fonts/verdana.ttf", size=12)
     canv = ImageDraw.Draw(base)
     text = wrap(font, text, 75)
@@ -1635,8 +1634,8 @@ def stroke(self, text):
     return b
 
 
-def surprised(self, text):
-    base = Image.open(f"{bundled_data_path(self)}/images/surprised.bmp").convert("RGBA")
+async def surprised(self, text):
+    base = Image.open(f"{bundled_data_path(self)}/images/surprised.png").convert("RGBA")
     font = ImageFont.truetype(f"{bundled_data_path(self)}/fonts/robotoregular.ttf", size=36)
     try:
         text1, text2 = text.replace(", ", ",").split(",")
@@ -1658,11 +1657,11 @@ def surprised(self, text):
     return b
 
 
-def sword(self, usernames, text):
+async def sword(self, usernames, text):
     text = text.replace(", ", ",").split(",")
     if len(text) != 2:
         text = ["SPLIT BY", "COMMA"]
-    base = Image.open(f"{bundled_data_path(self)}/images/sword.bmp")
+    base = Image.open(f"{bundled_data_path(self)}/images/sword.png")
     font = ImageFont.truetype(f"{bundled_data_path(self)}/fonts/verdana.ttf", size=48)
     temp = Image.new("RGBA", (1200, 800), color=(0, 0, 0, 0))
 
@@ -1689,7 +1688,7 @@ def sword(self, usernames, text):
     return b
 
 
-def theoffice(self, text):
+async def theoffice(self, text):
     base = Image.open(f"{bundled_data_path(self)}/images/theoffice.png")
     font = ImageFont.truetype(f"{bundled_data_path(self)}/fonts/verdana.ttf", size=28)
     canv = ImageDraw.Draw(base)
@@ -1706,8 +1705,8 @@ def theoffice(self, text):
     return b
 
 
-def thesearch(self, text):
-    base = Image.open(f"{bundled_data_path(self)}/images/thesearch.bmp").convert("RGBA")
+async def thesearch(self, text):
+    base = Image.open(f"{bundled_data_path(self)}/images/thesearch.png").convert("RGBA")
     font = ImageFont.truetype(f"{bundled_data_path(self)}/fonts/sans.ttf", size=16)
     canv = ImageDraw.Draw(base)
 
@@ -1721,9 +1720,9 @@ def thesearch(self, text):
     return b
 
 
-def trash(self, avatar):
+async def trash(self, avatar):
     avatar = Image.open(avatar).resize((483, 483)).convert("RGBA")
-    base = Image.open(f"{bundled_data_path(self)}/images/trash.bmp").convert("RGBA")
+    base = Image.open(f"{bundled_data_path(self)}/images/trash.png").convert("RGBA")
 
     avatar = avatar.filter(ImageFilter.GaussianBlur(radius=6))
     base.paste(avatar, (480, 0), avatar)
@@ -1735,8 +1734,8 @@ def trash(self, avatar):
     return b
 
 
-def tweet(self, avatar, username0, username1, text):
-    base = Image.open(f"{bundled_data_path(self)}/images/trump.bmp")
+async def tweet(self, avatar, username0, username1, text):
+    base = Image.open(f"{bundled_data_path(self)}/images/trump.png")
     avatar = Image.open(avatar).resize((98, 98)).convert("RGBA")
     font = ImageFont.truetype(
         f"{bundled_data_path(self)}/fonts/segoeuireg.ttf",
@@ -1796,8 +1795,8 @@ def tweet(self, avatar, username0, username1, text):
     return b
 
 
-def ugly(self, avatar):
-    base = Image.open(f"{bundled_data_path(self)}/ugly/ugly.bmp").convert("RGBA")
+async def ugly(self, avatar):
+    base = Image.open(f"{bundled_data_path(self)}/ugly/ugly.png").convert("RGBA")
     avatar = Image.open(avatar).resize((175, 175)).convert("RGBA")
     base.paste(avatar, (120, 55), avatar)
     base = base.convert("RGBA")
@@ -1808,11 +1807,11 @@ def ugly(self, avatar):
     return b
 
 
-def unpopular(self, avatar, text):
+async def unpopular(self, avatar, text):
     avatar = Image.open(avatar).resize((666, 666)).convert("RGBA")
-    base = Image.open(f"{bundled_data_path(self)}/images/unpopular_unpopular.bmp").convert("RGBA")
+    base = Image.open(f"{bundled_data_path(self)}/images/unpopular_unpopular.png").convert("RGBA")
     font = ImageFont.truetype(f"{bundled_data_path(self)}/fonts/semibold.woff", size=100)
-    reticle = Image.open(f"{bundled_data_path(self)}/images/unpopular_reticle.bmp").convert("RGBA")
+    reticle = Image.open(f"{bundled_data_path(self)}/images/unpopular_reticle.png").convert("RGBA")
     temp = Image.new("RGBA", (1200, 800), color=(0, 0, 0, 0))
     avatar_square = Image.new(mode="RGBA", size=(360, 270), color=(0, 0, 0, 0))
     avatar_mono = avatar.resize((300, 310)).rotate(16, expand=1).convert("1")
@@ -1844,7 +1843,7 @@ def unpopular(self, avatar, text):
     return b
 
 
-def violence(self, text):
+async def violence(self, text):
     base = Image.open(f"{bundled_data_path(self)}/images/violence.jpg")
     font = ImageFont.truetype(f"{bundled_data_path(self)}/fonts/arimobold.ttf", size=24)
     canv = ImageDraw.Draw(base)
@@ -1857,8 +1856,8 @@ def violence(self, text):
     return b
 
 
-def violentsparks(self, text):
-    base = Image.open(f"{bundled_data_path(self)}/images/violentsparks.bmp")
+async def violentsparks(self, text):
+    base = Image.open(f"{bundled_data_path(self)}/images/violentsparks.png")
     font = ImageFont.truetype(f"{bundled_data_path(self)}/fonts/medium.woff", size=36)
     canv = ImageDraw.Draw(base)
     try:
@@ -1878,8 +1877,8 @@ def violentsparks(self, text):
     return b
 
 
-def vr(self, text):
-    base = Image.open(f"{bundled_data_path(self)}/images/vr.bmp").convert("RGBA")
+async def vr(self, text):
+    base = Image.open(f"{bundled_data_path(self)}/images/vr.png").convert("RGBA")
     # We need a text layer here for the rotation
     font, text = auto_text_size(
         text, ImageFont.truetype(f"{bundled_data_path(self)}/fonts/sans.ttf"), 207, font_scalar=0.8
@@ -1897,8 +1896,8 @@ def vr(self, text):
     return b
 
 
-def walking(self, text):
-    base = Image.open(f"{bundled_data_path(self)}/images/walking.bmp")
+async def walking(self, text):
+    base = Image.open(f"{bundled_data_path(self)}/images/walking.png")
 
     font = ImageFont.truetype(f"{bundled_data_path(self)}/fonts/sans.ttf", size=50)
     canv = ImageDraw.Draw(base)
@@ -1913,8 +1912,8 @@ def walking(self, text):
     return b
 
 
-def wanted(self, avatar):
-    base = Image.open(f"{bundled_data_path(self)}/images/wanted.bmp").convert("RGBA")
+async def wanted(self, avatar):
+    base = Image.open(f"{bundled_data_path(self)}/images/wanted.png").convert("RGBA")
     avatar = Image.open(avatar).resize((447, 447)).convert("RGBA")
     base.paste(avatar, (145, 282), avatar)
 
@@ -1924,7 +1923,7 @@ def wanted(self, avatar):
     return b
 
 
-def warp(self, avatar):
+async def warp(self, avatar):
     implode = "-{}".format(str(randint(3, 15)))
     roll = "+{}+{}".format(randint(0, 256), randint(0, 256))
     swirl = "{}{}".format(choice(["+", "-"]), randint(120, 180))
@@ -1937,8 +1936,8 @@ def warp(self, avatar):
     return b
 
 
-def whodidthis(self, avatar):
-    base = Image.open(f"{bundled_data_path(self)}/images/whodidthis.bmp")
+async def whodidthis(self, avatar):
+    base = Image.open(f"{bundled_data_path(self)}/images/whodidthis.png")
     avatar = Image.open(avatar).resize((720, 405)).convert("RGBA")
     base.paste(avatar, (0, 159), avatar)
     base = base.convert("RGBA")
@@ -1949,8 +1948,8 @@ def whodidthis(self, avatar):
     return b
 
 
-def whothisis(self, avatar, text):
-    base = Image.open(f"{bundled_data_path(self)}/images/whothisis.bmp")
+async def whothisis(self, avatar, text):
+    base = Image.open(f"{bundled_data_path(self)}/images/whothisis.png")
     avatar = Image.open(avatar).resize((215, 215)).convert("RGBA")
     font = ImageFont.truetype(f"{bundled_data_path(self)}/fonts/arimobold.ttf", size=40)
     base.paste(avatar, (523, 15), avatar)
@@ -1966,10 +1965,10 @@ def whothisis(self, avatar, text):
     return b
 
 
-def youtube(self, avatar, text, username):
+async def youtube(self, avatar, text, username):
     avatar = Image.open(avatar).resize((52, 52)).convert("RGBA")
     name = username
-    base = Image.open(f"{bundled_data_path(self)}/youtube/youtube.bmp").convert("RGBA")
+    base = Image.open(f"{bundled_data_path(self)}/youtube/youtube.png").convert("RGBA")
     font = ImageFont.truetype(
         f"{bundled_data_path(self)}/fonts/robotomedium.ttf",
         size=17,

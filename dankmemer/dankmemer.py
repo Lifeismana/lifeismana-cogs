@@ -15,7 +15,7 @@ from .converters import ImageFinder
 class DankMemer(commands.Cog):
     """Dank Memer Commands."""
 
-    __version__ = "0.0.18"
+    __version__ = "0.0.19"
 
     def format_help_for_context(self, ctx):
         """Thanks Sinbad."""
@@ -70,7 +70,7 @@ class DankMemer(commands.Cog):
     @commands.command()
     async def abandon(self, ctx, *, text: commands.clean_content(fix_channel_mentions=True)):
         """Abandoning your son?"""
-        data = images.abandon(self, text)
+        data = await self.bot.loop.run_in_executor(None, images.abandon, self, text)
         await self.send_img(ctx, discord.File(data, "abandon.png"))
 
     @commands.command(aliases=["aborted"])
@@ -79,8 +79,8 @@ class DankMemer(commands.Cog):
         if image is None:
             image = str(ctx.author.avatar_url_as(static_format="png"))
         image = await self.get_img(url=image)
-        data = images.aborted(self, image)
-        await self.send_img(ctx, discord.File(data,"abort.png"))
+        data = await self.bot.loop.run_in_executor(None, images.aborted, self, image)
+        await self.send_img(ctx, discord.File(data, "abort.png"))
 
     @commands.command()
     async def affect(self, ctx, image: ImageFinder = None):
@@ -88,8 +88,8 @@ class DankMemer(commands.Cog):
         if image is None:
             image = str(ctx.author.avatar_url_as(static_format="png"))
         image = await self.get_img(url=image)
-        data = images.affect(self, image)
-        await self.send_img(ctx, discord.File(data,"affect.png"))
+        data = await self.bot.loop.run_in_executor(None, images.affect, self, image)
+        await self.send_img(ctx, discord.File(data, "affect.png"))
 
     @commands.command()
     async def airpods(self, ctx, image: ImageFinder = None):
@@ -97,8 +97,8 @@ class DankMemer(commands.Cog):
         if image is None:
             image = str(ctx.author.avatar_url_as(static_format="png"))
         image = await self.get_img(url=image)
-        data = gif.airpods(self, image)
-        await self.send_img(ctx, discord.File(data,"airpods.gif"))
+        data = await self.bot.loop.run_in_executor(None, gif.airpods, self, image)
+        await self.send_img(ctx, discord.File(data, "airpods.gif"))
 
     @commands.command()
     async def america(self, ctx, image: ImageFinder = None):
@@ -106,14 +106,14 @@ class DankMemer(commands.Cog):
         if image is None:
             image = str(ctx.author.avatar_url_as(static_format="png"))
         image = await self.get_img(url=image)
-        data = gif.america(self, image)
-        await self.send_img(ctx, discord.File(data,"america.gif"))
+        data = await self.bot.loop.run_in_executor(None, gif.america, self, image)
+        await self.send_img(ctx, discord.File(data, "america.gif"))
 
     @commands.command()
     async def armor(self, ctx, *, text: commands.clean_content(fix_channel_mentions=True)):
         """Nothing gets through this armour."""
-        data = images.armor(self, text)
-        await self.send_img(ctx, discord.File(data,"armor.png"))
+        data = await self.bot.loop.run_in_executor(None, images.armor, self, text)
+        await self.send_img(ctx, discord.File(data, "armor.png"))
 
     @commands.command()
     async def balloon(self, ctx, *, text: commands.clean_content(fix_channel_mentions=True)):
@@ -121,8 +121,8 @@ class DankMemer(commands.Cog):
 
         Texts must be comma seperated.
         """
-        data = images.ballon(self, text)
-        await self.send_img(ctx, discord.File(data,"balloon.png"))
+        data = await self.bot.loop.run_in_executor(None, images.ballon, self, text)
+        await self.send_img(ctx, discord.File(data, "balloon.png"))
 
     @commands.command()
     async def bed(self, ctx, user: discord.Member, user2: discord.Member = None):
@@ -134,7 +134,7 @@ class DankMemer(commands.Cog):
             await self.get_img(str(user.avatar_url_as(static_format="png"))),
             await self.get_img(str(user2.avatar_url_as(static_format="png"))),
         ]
-        data = images.bed(self, avatars)
+        data = await self.bot.loop.run_in_executor(None, images.bed, self, avatars)
         await self.send_img(ctx, discord.File(data, "bed.png"))
 
     @commands.command()
@@ -143,8 +143,8 @@ class DankMemer(commands.Cog):
         if image is None:
             image = str(ctx.author.avatar_url_as(static_format="png"))
         image = await self.get_img(url=image)
-        data = images.bongocat(self, image)
-        await self.send_img(ctx, discord.File(data,"bongocat.png"))
+        data = await self.bot.loop.run_in_executor(None, images.bongocat, self, image)
+        await self.send_img(ctx, discord.File(data, "bongocat.png"))
 
     @commands.command()
     async def boo(self, ctx, *, text: commands.clean_content(fix_channel_mentions=True)):
@@ -152,7 +152,7 @@ class DankMemer(commands.Cog):
 
         Texts must be comma seperated.
         """
-        data = images.boo(self, text)
+        data = await self.bot.loop.run_in_executor(None, images.boo, self, text)
         await self.send_img(ctx, discord.File(data, "boo.png"))
 
     @commands.command()
@@ -161,7 +161,7 @@ class DankMemer(commands.Cog):
 
         Texts must be 4 comma seperated items.
         """
-        data = images.brain(self, text)
+        data = await self.bot.loop.run_in_executor(None, images.brain, self, text)
         await self.send_img(ctx, discord.File(data, "brain.png"))
 
     @commands.command()
@@ -170,28 +170,28 @@ class DankMemer(commands.Cog):
         if image is None:
             image = str(ctx.author.avatar_url_as(static_format="png"))
         image = await self.get_img(url=image)
-        data = images.brazzers(self, image)
+        data = await self.bot.loop.run_in_executor(None, images.brazzers, self, image)
         await self.send_img(ctx, discord.File(data, "brazzers.png"))
 
     @commands.command()
     async def byemom(
-        self,
-        ctx,
-        user: typing.Optional[discord.Member] = None,
-        *,
-        text: commands.clean_content(fix_channel_mentions=True),
+            self,
+            ctx,
+            user: typing.Optional[discord.Member] = None,
+            *,
+            text: commands.clean_content(fix_channel_mentions=True),
     ):
         """Bye mom.
 
         User is a discord user ID, name or mention.
         """
         user = user or ctx.author
-        data = images.byemom(
-            self=self,
-            avatar=await self.get_img(str(user.avatar_url_as(static_format="png"))),
-            username=user.name,
-            text=text,
-        )
+        data = await self.bot.loop.run_in_executor(None, images.byemom,
+                                                   self,
+                                                   await self.get_img(str(user.avatar_url_as(static_format="png"))),
+                                                   text,
+                                                   user.name,
+                                                   )
         await self.send_img(ctx, discord.File(data, "byemom.png"))
 
     @commands.command()  # TODO: Maybe remove?
@@ -200,13 +200,13 @@ class DankMemer(commands.Cog):
         if image is None:
             image = str(ctx.author.avatar_url_as(static_format="png"))
         image = await self.get_img(url=image)
-        data = images.cancer(self, image)
+        data = await self.bot.loop.run_in_executor(None, images.cancer, self, image)
         await self.send_img(ctx, discord.File(data, "cancer.png"))
 
     @commands.command()
     async def changemymind(self, ctx, *, text: commands.clean_content(fix_channel_mentions=True)):
         """Change my mind?"""
-        data = images.changemymind(self, text)
+        data = await self.bot.loop.run_in_executor(None, images.changemymind, self, text)
         await self.send_img(ctx, discord.File(data, "changemymind.png"))
 
     @commands.command()
@@ -215,7 +215,7 @@ class DankMemer(commands.Cog):
 
         Text must be comma seperated.
         """
-        data = images.cheating(self, text)
+        data = await self.bot.loop.run_in_executor(None, images.cheating, self, text)
         await self.send_img(ctx, discord.File(data, "cheating.png"))
 
     @commands.command()
@@ -224,7 +224,7 @@ class DankMemer(commands.Cog):
 
         Text must be 3 comma seperated values.
         """
-        data = images.citation(self, text)
+        data = await self.bot.loop.run_in_executor(None, images.citation, self, text)
         await self.send_img(ctx, discord.File(data, "citation.png"))
 
     @commands.command()
@@ -233,7 +233,7 @@ class DankMemer(commands.Cog):
         if image is None:
             image = str(ctx.author.avatar_url_as(static_format="png"))
         image = await self.get_img(url=image)
-        data = gif.communism(self, image)
+        data = await self.bot.loop.run_in_executor(None, gif.communism, self, image)
         await self.send_img(ctx, discord.File(data, "communism.gif"))
 
     @commands.command()
@@ -242,7 +242,7 @@ class DankMemer(commands.Cog):
 
         Text must be 2 comma seperated values.
         """
-        data = images.confusedcat(self, text)
+        data = await self.bot.loop.run_in_executor(None, images.confusedcat, self, text)
         await self.send_img(ctx, discord.File(data, "confusedcat.png"))
 
     # TODO we should be able to send 2 images
@@ -252,7 +252,7 @@ class DankMemer(commands.Cog):
         if image is None:
             image = str(ctx.author.avatar_url_as(static_format="png"))
         image = [await self.get_img(url=image)]
-        data = images.corporate(self, image)
+        data = await self.bot.loop.run_in_executor(None, images.corporate, self, image)
         await self.send_img(ctx, discord.File(data, "corporate.png"))
 
     @commands.command()
@@ -261,7 +261,7 @@ class DankMemer(commands.Cog):
 
         Text must be 2 comma seperated values.
         """
-        data = images.cry(self, text)
+        data = await self.bot.loop.run_in_executor(None, images.cry, self, text)
         await self.send_img(ctx, discord.File(data, "cry.png"))
 
     @commands.command()
@@ -270,7 +270,7 @@ class DankMemer(commands.Cog):
         if image is None:
             image = str(ctx.author.avatar_url_as(static_format="png"))
         image = await self.get_img(url=image)
-        data = images.dab(self, image)
+        data = await self.bot.loop.run_in_executor(None, images.dab, self, image)
         await self.send_img(ctx, discord.File(data, "dab.png"))
 
     @commands.command()
@@ -279,7 +279,7 @@ class DankMemer(commands.Cog):
         if image is None:
             image = str(ctx.author.avatar_url_as(static_format="png"))
         image = await self.get_img(url=image)
-        data = gif.dank(self, image)
+        data = await self.bot.loop.run_in_executor(None, gif.dank, self, image)
         await self.send_img(ctx, discord.File(data, "dank.gif"))
 
     @commands.command()
@@ -288,7 +288,7 @@ class DankMemer(commands.Cog):
         if image is None:
             image = str(ctx.author.avatar_url_as(static_format="png"))
         image = await self.get_img(url=image)
-        data = images.deepfry(self, image)
+        data = await self.bot.loop.run_in_executor(None, images.deepfry, self, image)
         await self.send_img(ctx, discord.File(data, "deepfry.png"))
 
     @commands.command()
@@ -297,7 +297,7 @@ class DankMemer(commands.Cog):
         if image is None:
             image = str(ctx.author.avatar_url_as(static_format="png"))
         image = await self.get_img(url=image)
-        data = images.delete(self, image)
+        data = await self.bot.loop.run_in_executor(None, images.delete, self, image)
         await self.send_img(ctx, discord.File(data, "delete.png"))
 
     @commands.command()
@@ -306,7 +306,7 @@ class DankMemer(commands.Cog):
         if image is None:
             image = str(ctx.author.avatar_url_as(static_format="png"))
         image = await self.get_img(url=image)
-        data = images.disability(self, image)
+        data = await self.bot.loop.run_in_executor(None, images.disability, self, image)
         await self.send_img(ctx, discord.File(data, "disability.png"))
 
     @commands.command()
@@ -315,7 +315,7 @@ class DankMemer(commands.Cog):
 
         Text must be 2 comma seperated values.
         """
-        data = images.doglemon(self, text)
+        data = await self.bot.loop.run_in_executor(None, images.doglemon, self, text)
         await self.send_img(ctx, discord.File(data, "doglemon.png"))
 
     @commands.command()
@@ -324,7 +324,7 @@ class DankMemer(commands.Cog):
         if image is None:
             image = str(ctx.author.avatar_url_as(static_format="png"))
         image = await self.get_img(url=image)
-        data = images.door(self, image)
+        data = await self.bot.loop.run_in_executor(None, images.door, self, image)
         await self.send_img(ctx, discord.File(data, "door.png"))
 
     @commands.command()
@@ -333,15 +333,15 @@ class DankMemer(commands.Cog):
         if image is None:
             image = str(ctx.author.avatar_url_as(static_format="png"))
         image = await self.get_img(url=image)
-        data = images.egg(self, image)
+        data = await self.bot.loop.run_in_executor(None, images.egg, self, image)
         await self.send_img(ctx, discord.File(data, "egg.png"))
 
     @commands.command(aliases=["em"])
     async def emergencymeeting(
-        self, ctx, *, text: commands.clean_content(fix_channel_mentions=True)
+            self, ctx, *, text: commands.clean_content(fix_channel_mentions=True)
     ):
         """Call an emergency meeting."""
-        data = images.emergencymeeting(self, text)
+        data = await self.bot.loop.run_in_executor(None, images.emergencymeeting, self, text)
         await self.send_img(ctx, discord.File(data, "emergencymeeting.png"))
 
     @commands.command()
@@ -350,7 +350,7 @@ class DankMemer(commands.Cog):
 
         Text must be 2 comma seperated values.
         """
-        data = images.excuseme(self, text)
+        data = await self.bot.loop.run_in_executor(None, images.excuseme, self, text)
         await self.send_img(ctx, discord.File(data, "excuseme.png"))
 
     @commands.command()
@@ -359,7 +359,7 @@ class DankMemer(commands.Cog):
 
         Text must be 2 comma seperated values.
         """
-        data = images.expanddong(self, text)
+        data = await self.bot.loop.run_in_executor(None, images.expanddong, self, text)
         await self.send_img(ctx, discord.File(data, "expanddong.png"))
 
     @commands.command()
@@ -368,7 +368,7 @@ class DankMemer(commands.Cog):
 
         Text must be 2 comma seperated values.
         """
-        data = images.facts(self, text)
+        data = await self.bot.loop.run_in_executor(None, images.facts, self, text)
         await self.send_img(ctx, discord.File(data, "facts.png"))
 
     @commands.command()
@@ -377,7 +377,7 @@ class DankMemer(commands.Cog):
         if image is None:
             image = str(ctx.author.avatar_url_as(static_format="png"))
         image = await self.get_img(url=image)
-        data = images.failure(self, image)
+        data = await self.bot.loop.run_in_executor(None, images.failure, self, image)
         await self.send_img(ctx, discord.File(data, "failure.png"))
 
     @commands.command()
@@ -386,7 +386,7 @@ class DankMemer(commands.Cog):
         if image is None:
             image = str(ctx.author.avatar_url_as(static_format="png"))
         image = await self.get_img(url=image)
-        data = images.fakenews(self, image)
+        data = await self.bot.loop.run_in_executor(None, images.fakenews, self, image)
         await self.send_img(ctx, discord.File(data, "fakenews.png"))
 
     @commands.command()
@@ -395,7 +395,7 @@ class DankMemer(commands.Cog):
 
         Text must be 2 sentences comma seperated.
         """
-        data = images.farmer(self, text)
+        data = await self.bot.loop.run_in_executor(None, images.farmer, self, text)
         await self.send_img(ctx, discord.File(data, "farmer.png"))
 
     @commands.command()
@@ -404,23 +404,25 @@ class DankMemer(commands.Cog):
         if image is None:
             image = str(ctx.author.avatar_url_as(static_format="png"))
         image = await self.get_img(url=image)
-        data = images.fedora(self, image)
+        data = await self.bot.loop.run_in_executor(None, images.fedora, self, image)
         await self.send_img(ctx, discord.File(data, "fedora.png"))
 
     @commands.command()
     async def floor(
-        self,
-        ctx,
-        user: typing.Optional[discord.Member] = None,
-        *,
-        text: commands.clean_content(fix_channel_mentions=True),
+            self,
+            ctx,
+            user: typing.Optional[discord.Member] = None,
+            *,
+            text: commands.clean_content(fix_channel_mentions=True),
     ):
         """The floor is ....
 
         User is a discord user ID, name or mention.
         """
         user = user or ctx.author
-        data = images.floor(self=self, avatar=await self.get_img(url=str(user.avatar_url_as(static_format="png"))), text=text)
+        data = await self.bot.loop.run_in_executor(None, images.floor, self,
+                                                   await self.get_img(url=str(user.avatar_url_as(static_format="png"))),
+                                                   text)
         await self.send_img(ctx, discord.File(data, "floor.png"))
 
     @commands.command()
@@ -429,22 +431,24 @@ class DankMemer(commands.Cog):
 
         Text must be 2 comma seperated values.
         """
-        data = images.fuck(self, text)
+        data = await self.bot.loop.run_in_executor(None, images.fuck, self, text)
         await self.send_img(ctx, discord.File(data, "fuck.png"))
 
     @commands.command()
     async def garfield(
-        self,
-        ctx,
-        user: typing.Optional[discord.Member] = None,
-        *,
-        text: commands.clean_content(fix_channel_mentions=True),
+            self,
+            ctx,
+            user: typing.Optional[discord.Member] = None,
+            *,
+            text: commands.clean_content(fix_channel_mentions=True),
     ):
         """I wonder who that's for - Garfield meme.
 
         User is a discord user ID, name or mention."""
         user = user or ctx.author
-        data = images.garfield(self, await self.get_img(url=str(user.avatar_url_as(static_format="png"))), text)
+        data = await self.bot.loop.run_in_executor(None, images.garfield, self,
+                                                   await self.get_img(url=str(user.avatar_url_as(static_format="png"))),
+                                                   text)
         await self.send_img(ctx, discord.File(data, "garfield.png"))
 
     @commands.command(aliases=["rainbow", "lgbtq"])
@@ -453,13 +457,13 @@ class DankMemer(commands.Cog):
         if image is None:
             image = str(ctx.author.avatar_url_as(static_format="png"))
         image = await self.get_img(url=image)
-        data = images.gay(self, image)
+        data = await self.bot.loop.run_in_executor(None, images.gay, self, image)
         await self.send_img(ctx, discord.File(data, "gay.png"))
 
     @commands.command()
     async def godwhy(self, ctx, *, text: commands.clean_content(fix_channel_mentions=True)):
         """God why."""
-        data = images.godwhy(self, text)
+        data = await self.bot.loop.run_in_executor(None, images.godwhy, self, text)
         await self.send_img(ctx, discord.File(data, "godwhy.png"))
 
     @commands.command()
@@ -468,7 +472,7 @@ class DankMemer(commands.Cog):
         if image is None:
             image = str(ctx.author.avatar_url_as(static_format="png"))
         image = await self.get_img(url=image)
-        data = images.goggles(self, image)
+        data = await self.bot.loop.run_in_executor(None, images.goggles, self, image)
         await self.send_img(ctx, discord.File(data, "goggles.png"))
 
     @commands.command()
@@ -477,19 +481,19 @@ class DankMemer(commands.Cog):
         if image is None:
             image = str(ctx.author.avatar_url_as(static_format="png"))
         image = await self.get_img(url=image)
-        data = images.hitler(self, image)
+        data = await self.bot.loop.run_in_executor(None, images.hitler, self, image)
         await self.send_img(ctx, discord.File(data, "hitler.png"))
 
     @commands.command()
     async def humansgood(self, ctx, *, text: commands.clean_content(fix_channel_mentions=True)):
         """Humans are wonderful things."""
-        data = images.humansgood(self, text)
+        data = await self.bot.loop.run_in_executor(None, images.humansgood, self, text)
         await self.send_img(ctx, discord.File(data, "humansgood.png"))
 
     @commands.command()
     async def inator(self, ctx, *, text: commands.clean_content(fix_channel_mentions=True)):
         """Xinator."""
-        data = images.inator(self, text)
+        data = await self.bot.loop.run_in_executor(None, images.inator, self, text)
         await self.send_img(ctx, discord.File(data, "inator.png"))
 
     @commands.command(aliases=["invertcolor", "invertcolors", "invercolours"])
@@ -498,7 +502,7 @@ class DankMemer(commands.Cog):
         if image is None:
             image = str(ctx.author.avatar_url_as(static_format="png"))
         image = await self.get_img(url=image)
-        data = images.invert(image)
+        data = await self.bot.loop.run_in_executor(None, images.invert, image)
         await self.send_img(ctx, discord.File(data, "invert.png"))
 
     @commands.command()
@@ -507,7 +511,7 @@ class DankMemer(commands.Cog):
         if image is None:
             image = str(ctx.author.avatar_url_as(static_format="png"))
         image = await self.get_img(url=image)
-        data = images.ipad(self, image)
+        data = await self.bot.loop.run_in_executor(None, images.ipad, self, image)
         await self.send_img(ctx, discord.File(data, "ipad.png"))
 
     @commands.command()
@@ -516,26 +520,26 @@ class DankMemer(commands.Cog):
         if image is None:
             image = str(ctx.author.avatar_url_as(static_format="png"))
         image = await self.get_img(url=image)
-        data = images.jail(self, image)
+        data = await self.bot.loop.run_in_executor(None, images.jail, self, image)
         await self.send_img(ctx, discord.File(data, "jail.png"))
 
     @commands.command()
     async def justpretending(
-        self, ctx, *, text: commands.clean_content(fix_channel_mentions=True)
+            self, ctx, *, text: commands.clean_content(fix_channel_mentions=True)
     ):
         """Playing dead.
 
         Text must be 2 comma seperated values.
         """
-        data = images.justpretending(self, text)
+        data = await self.bot.loop.run_in_executor(None, images.justpretending, self, text)
         await self.send_img(ctx, discord.File(data, "justpretending.png"))
 
     @commands.command()
     async def keepyourdistance(
-        self, ctx, *, text: commands.clean_content(fix_channel_mentions=True)
+            self, ctx, *, text: commands.clean_content(fix_channel_mentions=True)
     ):
         """Keep your distance."""
-        data = images.keepurdistance(self, text)
+        data = await self.bot.loop.run_in_executor(None, images.keepurdistance, self, text)
         await self.send_img(ctx, discord.File(data, "keepurdistance.png"))
 
     @commands.command()
@@ -544,18 +548,18 @@ class DankMemer(commands.Cog):
         if image is None:
             image = str(ctx.author.avatar_url_as(static_format="png"))
         image = await self.get_img(url=image)
-        data = images.kimborder(self, image)
+        data = await self.bot.loop.run_in_executor(None, images.kimborder, self, image)
         await self.send_img(ctx, discord.File(data, "kimborder.png"))
 
     @commands.command()
     async def knowyourlocation(
-        self, ctx, *, text: commands.clean_content(fix_channel_mentions=True)
+            self, ctx, *, text: commands.clean_content(fix_channel_mentions=True)
     ):
         """Google wants to know your location.
 
         Text must be 2 comma seperated values.
         """
-        data = images.knowyourlocation(self, text)
+        data = await self.bot.loop.run_in_executor(None, images.knowyourlocation, self, text)
         await self.send_img(ctx, discord.File(data, "knowyourlocation.png"))
 
     @commands.command()  # TODO: MP4s
@@ -564,7 +568,7 @@ class DankMemer(commands.Cog):
 
         Text must be 2 comma seperated values.
         """
-        data = movie.kowalski(self, text)
+        data = await self.bot.loop.run_in_executor(None, movie.kowalski, self, text)
         await self.send_img(ctx, discord.File(data, "kowalski.gif"))
 
         try:
@@ -578,13 +582,13 @@ class DankMemer(commands.Cog):
         if image is None:
             image = str(ctx.author.avatar_url_as(static_format="png"))
         image = await self.get_img(url=image)
-        data = images.laid(self, image)
+        data = await self.bot.loop.run_in_executor(None, images.laid, self, image)
         await self.send_img(ctx, discord.File(data, "laid.png"))
 
     @commands.command()  # TODO: MP4s
     async def letmein(self, ctx, *, text: commands.clean_content(fix_channel_mentions=True)):
         """LET ME IN."""
-        data = movie.letmein(self, text)
+        data = await self.bot.loop.run_in_executor(None, movie.letmein, self, text)
         await self.send_img(ctx, discord.File(data, "letmein.mp4"))
 
         try:
@@ -598,15 +602,16 @@ class DankMemer(commands.Cog):
 
         Text must be 2 comma seperated values.
         """
-        data = images.lick(self, text)
+        data = await self.bot.loop.run_in_executor(None, images.lick, self, text)
         await self.send_img(ctx, discord.File(data, "lick.png"))
 
     @commands.command()
     async def madethis(self, ctx, user: discord.Member, user2: discord.Member = None):
         """I made this!"""
         user2 = user2 or ctx.author
-        users = [await self.get_img(url=str(user2.avatar_url_as(static_format="png"))), await self.get_img(url=str(user.avatar_url_as(static_format="png")))]
-        data = images.madethis(self, users)
+        users = [await self.get_img(url=str(user2.avatar_url_as(static_format="png"))),
+                 await self.get_img(url=str(user.avatar_url_as(static_format="png")))]
+        data = await self.bot.loop.run_in_executor(None, images.madethis, self, users)
         await self.send_img(ctx, discord.File(data, "madethis.png"))
 
     # MAYBE WE SHOULD REMOVE IT
@@ -617,7 +622,7 @@ class DankMemer(commands.Cog):
             image = str(ctx.author.avatar_url_as(static_format="png"))
         image = await self.get_img(url=image)
         # we don't give it text
-        data = images.magik(self, image)
+        data = await self.bot.loop.run_in_executor(None, images.magik, self, image)
         await self.send_img(ctx, discord.File(data, "magik.png"))
 
     @commands.command()
@@ -626,18 +631,18 @@ class DankMemer(commands.Cog):
 
         Text must be 3 comma seperated values.
         """
-        data = images.master(self, text)
+        data = await self.bot.loop.run_in_executor(None, images.master, self, text)
         await self.send_img(ctx, discord.File(data, "master.png"))
 
     @commands.command()
     async def meme(
-        self,
-        ctx,
-        image: typing.Optional[ImageFinder],
-        top_text: commands.clean_content(fix_channel_mentions=True),
-        bottom_text: commands.clean_content(fix_channel_mentions=True),
-        color: typing.Optional[str],
-        font: typing.Optional[str] = None,
+            self,
+            ctx,
+            image: typing.Optional[ImageFinder],
+            top_text: commands.clean_content(fix_channel_mentions=True),
+            bottom_text: commands.clean_content(fix_channel_mentions=True),
+            color: typing.Optional[str],
+            font: typing.Optional[str] = None,
     ):
         """Make your own meme.
 
@@ -660,13 +665,13 @@ class DankMemer(commands.Cog):
             clr = color
         else:
             clr = ""
-        data = images.meme(self, image, top_text, bottom_text, clr, fnt)
+        data = await self.bot.loop.run_in_executor(None, images.meme, self, image, top_text, bottom_text, clr, fnt)
         await self.send_img(ctx, discord.File(data, "meme.png"))
 
     @commands.command()
     async def note(self, ctx, *, text: commands.clean_content(fix_channel_mentions=True)):
         """Pass a note back."""
-        data = images.note(self, text)
+        data = await self.bot.loop.run_in_executor(None, images.note, self, text)
         await self.send_img(ctx, discord.File(data, "note.png"))
 
     @commands.command()
@@ -675,7 +680,7 @@ class DankMemer(commands.Cog):
 
         nothing.
         """
-        data = images.nothing(self, text)
+        data = await self.bot.loop.run_in_executor(None, images.nothing, self, text)
         await self.send_img(ctx, discord.File(data, "nothing.png"))
 
     @commands.command()
@@ -685,21 +690,22 @@ class DankMemer(commands.Cog):
         user: discord User, takes their avatar and display name.
         """
         user = user or ctx.author
-        data = images.obama(
-            self, await self.get_img(url=str(user.avatar_url_as(static_format="png"))), user.display_name
-        )
+        data = await self.bot.loop.run_in_executor(None, images.obama, self,
+                                                   await self.get_img(url=str(user.avatar_url_as(static_format="png"))),
+                                                   user.display_name
+                                                   )
         await self.send_img(ctx, discord.File(data, "obama.png"))
 
     @commands.command()
     async def ohno(self, ctx, *, text: commands.clean_content(fix_channel_mentions=True)):
         """Oh no, it's stupid!"""
-        data = images.ohno(self, text)
+        data = await self.bot.loop.run_in_executor(None, images.ohno, self, text)
         await self.send_img(ctx, discord.File(data, "ohno.png"))
 
     @commands.command()
     async def piccolo(self, ctx, *, text: commands.clean_content(fix_channel_mentions=True)):
         """Piccolo."""
-        data = images.piccolo(self, text)
+        data = await self.bot.loop.run_in_executor(None, images.piccolo, self, text)
         await self.send_img(ctx, discord.File(data, "piccolo.png"))
 
     @commands.command()
@@ -708,28 +714,30 @@ class DankMemer(commands.Cog):
 
         Text must be 3 comma seperated values.
         """
-        data = images.plan(self, text)
+        data = await self.bot.loop.run_in_executor(None, images.plan, self, text)
         await self.send_img(ctx, discord.File(data, "plan.png"))
 
     @commands.command()
     async def presentation(self, ctx, *, text: commands.clean_content(fix_channel_mentions=True)):
         """Lisa makes a presentation."""
-        data = images.presentation(self, text)
+        data = await self.bot.loop.run_in_executor(None, images.presentation, self, text)
         await self.send_img(ctx, discord.File(data, "presentation.png"))
 
     @commands.command()
     async def quote(
-        self,
-        ctx,
-        user: typing.Optional[discord.Member] = None,
-        *,
-        text: commands.clean_content(fix_channel_mentions=True),
+            self,
+            ctx,
+            user: typing.Optional[discord.Member] = None,
+            *,
+            text: commands.clean_content(fix_channel_mentions=True),
     ):
         """Quote a discord user."""
         user = user or ctx.author
-        data = images.quote(
-            self, await self.get_img(url=str(user.avatar_url_as(static_format="png"))), user.name, text
-        )
+        data = await self.bot.loop.run_in_executor(None, images.quote,
+                                                   self,
+                                                   await self.get_img(url=str(user.avatar_url_as(static_format="png"))),
+                                                   user.name, text
+                                                   )
         await self.send_img(ctx, discord.File(data, "quote.png"))
 
     @commands.command()
@@ -738,7 +746,7 @@ class DankMemer(commands.Cog):
         if image is None:
             image = str(ctx.author.avatar_url_as(static_format="png"))
         image = await self.get_img(url=image)
-        data = images.radialblur(self, image)
+        data = await self.bot.loop.run_in_executor(None, images.radialblur, self, image)
         await self.send_img(ctx, discord.File(data, "radialblur.png"))
 
     @commands.command(aliases=["restinpeace"])
@@ -747,7 +755,7 @@ class DankMemer(commands.Cog):
         if image is None:
             image = str(ctx.author.avatar_url_as(static_format="png"))
         image = await self.get_img(url=image)
-        data = images.rip(self, image)
+        data = await self.bot.loop.run_in_executor(None, images.rip, self, image)
         await self.send_img(ctx, discord.File(data, "rip.png"))
 
     @commands.command()
@@ -756,7 +764,7 @@ class DankMemer(commands.Cog):
         if image is None:
             image = str(ctx.author.avatar_url_as(static_format="png"))
         image = await self.get_img(url=image)
-        data = images.roblox(self, image)
+        data = await self.bot.loop.run_in_executor(None, images.roblox, self, image)
         await self.send_img(ctx, discord.File(data, "roblox.png"))
 
     @commands.command()
@@ -765,7 +773,7 @@ class DankMemer(commands.Cog):
         if image is None:
             image = str(ctx.author.avatar_url_as(static_format="png"))
         image = await self.get_img(url=image)
-        data = images.salty(self, image)
+        data = await self.bot.loop.run_in_executor(None, images.salty, self, image)
         await self.send_img(ctx, discord.File(data, "salty.gif"))
 
     @commands.command()
@@ -774,13 +782,13 @@ class DankMemer(commands.Cog):
         if image is None:
             image = str(ctx.author.avatar_url_as(static_format="png"))
         image = await self.get_img(url=image)
-        data = images.satan(self, image)
+        data = await self.bot.loop.run_in_executor(None, images.satan, self, image)
         await self.send_img(ctx, discord.File(data, "satan.png"))
 
     @commands.command()
     async def savehumanity(self, ctx, *, text: commands.clean_content(fix_channel_mentions=True)):
         """The secret to saving humanity."""
-        data = images.savehumanity(self, text)
+        data = await self.bot.loop.run_in_executor(None, images.savehumanity, self, text)
         await self.send_img(ctx, discord.File(data, "savehumanity.png"))
 
     @commands.command()
@@ -794,13 +802,13 @@ class DankMemer(commands.Cog):
             await self.get_img(url=str(user2.avatar_url_as(static_format="png"))),
             await self.get_img(url=str(user.avatar_url_as(static_format="png"))),
         ]
-        data = images.screams(self, avatars)
+        data = await self.bot.loop.run_in_executor(None, images.screams, self, avatars)
         await self.send_img(ctx, discord.File(data, "screams.png"))
 
     @commands.command()
     async def shit(self, ctx, *, text: commands.clean_content(fix_channel_mentions=True)):
         """I stepped in crap."""
-        data = images.shit(self, text)
+        data = await self.bot.loop.run_in_executor(None, images.shit, self, text)
         await self.send_img(ctx, discord.File(data, "shit.png"))
 
     @commands.command()
@@ -809,7 +817,7 @@ class DankMemer(commands.Cog):
         if image is None:
             image = str(ctx.author.avatar_url_as(static_format="png"))
         image = await self.get_img(url=image)
-        data = images.sickban(self, image)
+        data = await self.bot.loop.run_in_executor(None, images.sickban, self, image)
         await self.send_img(ctx, discord.File(data, "sickban.png"))
 
     @commands.command()
@@ -820,13 +828,13 @@ class DankMemer(commands.Cog):
             await self.get_img(url=str(user2.avatar_url_as(static_format="png"))),
             await self.get_img(url=str(user.avatar_url_as(static_format="png"))),
         ]
-        data = images.slap(self, avatars)
+        data = await self.bot.loop.run_in_executor(None, images.slap, self, avatars)
         await self.send_img(ctx, discord.File(data, "slap.png"))
 
     @commands.command()
     async def slapsroof(self, ctx, *, text: commands.clean_content(fix_channel_mentions=True)):
         """This bad boy can fit so much in it."""
-        data = images.slapsroof(self, text)
+        data = await self.bot.loop.run_in_executor(None, images.slapsroof, self, text)
         await self.send_img(ctx, discord.File(data, "slapsroof.png"))
 
     @commands.command()
@@ -835,7 +843,7 @@ class DankMemer(commands.Cog):
 
         Text must be 2 comma seperated values.
         """
-        data = images.sneakyfox(self, text)
+        data = await self.bot.loop.run_in_executor(None, images.sneakyfox, self, text)
         await self.send_img(ctx, discord.File(data, "sneakyfox.png"))
 
     @commands.command()
@@ -846,13 +854,13 @@ class DankMemer(commands.Cog):
             await self.get_img(url=str(user2.avatar_url_as(static_format="png"))),
             await self.get_img(url=str(user.avatar_url_as(static_format="png"))),
         ]
-        data = images.spank(self, avatars)
+        data = await self.bot.loop.run_in_executor(None, images.spank, self, avatars)
         await self.send_img(ctx, discord.File(data, "spank.png"))
 
     @commands.command()
     async def stroke(self, ctx, *, text: commands.clean_content(fix_channel_mentions=True)):
         """How to recognize a stroke?"""
-        data = images.stroke(self, text)
+        data = await self.bot.loop.run_in_executor(None, images.stroke, self, text)
         await self.send_img(ctx, discord.File(data, "stroke.png"))
 
     @commands.command()
@@ -861,16 +869,16 @@ class DankMemer(commands.Cog):
 
         Text must be 2 comma seperated values.
         """
-        data = images.surprised(self, text)
+        data = await self.bot.loop.run_in_executor(None, images.surprised, self, text)
         await self.send_img(ctx, discord.File(data, "surprised.png"))
 
     @commands.command()
     async def sword(
-        self,
-        ctx,
-        user: typing.Optional[discord.Member] = None,
-        *,
-        text: commands.clean_content(fix_channel_mentions=True),
+            self,
+            ctx,
+            user: typing.Optional[discord.Member] = None,
+            *,
+            text: commands.clean_content(fix_channel_mentions=True),
     ):
         """Swordknife.
 
@@ -878,7 +886,7 @@ class DankMemer(commands.Cog):
         """
         user = user or ctx.author
 
-        data = images.sword(self, user.name, text)
+        data = await self.bot.loop.run_in_executor(None, images.sword, self, user.name, text)
         await self.send_img(ctx, discord.File(data, "sword.png"))
 
     @commands.command()
@@ -887,13 +895,13 @@ class DankMemer(commands.Cog):
 
         Text must be 2 sentences comma seperated.
         """
-        data = images.theoffice(self, text)
+        data = await self.bot.loop.run_in_executor(None, images.theoffice, self, text)
         await self.send_img(ctx, discord.File(data, "theoffice.png"))
 
     @commands.command()
     async def thesearch(self, ctx, *, text: commands.clean_content(fix_channel_mentions=True)):
         """The search for intelligent life continues.."""
-        data = images.thesearch(self, text)
+        data = await self.bot.loop.run_in_executor(None, images.thesearch, self, text)
         await self.send_img(ctx, discord.File(data, "thesearch.png"))
 
     @commands.command()
@@ -901,8 +909,8 @@ class DankMemer(commands.Cog):
         """Peter Parker trash."""
         if image is None:
             image = str(ctx.author.avatar_url_as(static_format="png"))
-        image =  await self.get_img(url=image)
-        data = images.trash(self, image)
+        image = await self.get_img(url=image)
+        data = await self.bot.loop.run_in_executor(None, images.trash, self, image)
         await self.send_img(ctx, discord.File(data, "trash.png"))
 
     @commands.command()
@@ -911,16 +919,16 @@ class DankMemer(commands.Cog):
         if image is None:
             image = str(ctx.author.avatar_url_as(static_format="png"))
         image = await self.get_img(url=image)
-        data = gif.trigger(self, image)
+        data = await self.bot.loop.run_in_executor(None, gif.trigger, self, image)
         await self.send_img(ctx, discord.File(data, "trigger.gif"))
 
     @commands.command()
     async def tweet(
-        self,
-        ctx,
-        user: typing.Optional[discord.Member],
-        *,
-        text: commands.clean_content(fix_channel_mentions=True),
+            self,
+            ctx,
+            user: typing.Optional[discord.Member],
+            *,
+            text: commands.clean_content(fix_channel_mentions=True),
     ):
         """Create a fake tweet.
 
@@ -928,9 +936,12 @@ class DankMemer(commands.Cog):
         text: commands.clean_content(fix_channel_mentions=True)ing. Text to show on the generated image.
         """
         user = user or ctx.author
-        data = images.tweet(
-            self, await self.get_img(url=str(user.avatar_url_as(static_format="png"))), user.display_name, user.name, text
-        )
+        data = await self.bot.loop.run_in_executor(None, images.tweet,
+                                                   self,
+                                                   await self.get_img(url=str(user.avatar_url_as(static_format="png"))),
+                                                   user.display_name, user.name,
+                                                   text
+                                                   )
         await self.send_img(ctx, discord.File(data, "tweet.png"))
 
     @commands.command()
@@ -939,26 +950,28 @@ class DankMemer(commands.Cog):
         if image is None:
             image = str(ctx.author.avatar_url_as(static_format="png"))
         image = await self.get_img(url=image)
-        data = images.ugly(self, image)
+        data = await self.bot.loop.run_in_executor(None, images.ugly, self, image)
         await self.send_img(ctx, discord.File(data, "ugly.png"))
 
     @commands.command()
     async def unpopular(
-        self,
-        ctx,
-        user: typing.Optional[discord.Member] = None,
-        *,
-        text: commands.clean_content(fix_channel_mentions=True),
+            self,
+            ctx,
+            user: typing.Optional[discord.Member] = None,
+            *,
+            text: commands.clean_content(fix_channel_mentions=True),
     ):
         """Get rid of that pesky teacher."""
         user = user or ctx.author
-        data = images.unpopular(self, await self.get_img(url=str(user.avatar_url_as(static_format="png"))), text)
+        data = await self.bot.loop.run_in_executor(None, images.unpopular, self,
+                                                   await self.get_img(url=str(user.avatar_url_as(static_format="png"))),
+                                                   text)
         await self.send_img(ctx, discord.File(data, "unpopular.png"))
 
     @commands.command()
     async def violence(self, ctx, *, text: commands.clean_content(fix_channel_mentions=True)):
         """Violence is never the answer."""
-        data = images.violence(self, text)
+        data = await self.bot.loop.run_in_executor(None, images.violence, self, text)
         await self.send_img(ctx, discord.File(data, "violence.png"))
 
     @commands.command()
@@ -967,19 +980,19 @@ class DankMemer(commands.Cog):
 
         Text must be 2 comma seperated values.
         """
-        data = images.violentsparks(self, text)
+        data = await self.bot.loop.run_in_executor(None, images.violentsparks, self, text)
         await self.send_img(ctx, discord.File(data, "violentsparks.png"))
 
     @commands.command()
     async def vr(self, ctx, *, text: commands.clean_content(fix_channel_mentions=True)):
         """Woah, VR is so realistic."""
-        data = images.vr(self, text)
+        data = await self.bot.loop.run_in_executor(None, images.vr, self, text)
         await self.send_img(ctx, discord.File(data, "vr.png"))
 
     @commands.command()
     async def walking(self, ctx, *, text: commands.clean_content(fix_channel_mentions=True)):
         """Walking Meme."""
-        data = images.walking(self, text)
+        data = await self.bot.loop.run_in_executor(None, images.walking, self, text)
         await self.send_img(ctx, discord.File(data, "walking.png"))
 
     @commands.command()
@@ -988,7 +1001,7 @@ class DankMemer(commands.Cog):
         if image is None:
             image = str(ctx.author.avatar_url_as(static_format="png"))
         image = await self.get_img(url=image)
-        data = images.wanted(self, image)
+        data = await self.bot.loop.run_in_executor(None, images.wanted, self, image)
         await self.send_img(ctx, discord.File(data, "wanted.png"))
 
     @commands.command()
@@ -997,7 +1010,7 @@ class DankMemer(commands.Cog):
         if image is None:
             image = str(ctx.author.avatar_url_as(static_format="png"))
         image = await self.get_img(url=image)
-        data = images.warp(self, image)
+        data = await self.bot.loop.run_in_executor(None, images.warp, self, image)
         await self.send_img(ctx, discord.File(data, "warp.png"))
 
     @commands.command()
@@ -1006,19 +1019,21 @@ class DankMemer(commands.Cog):
         if image is None:
             image = str(ctx.author.avatar_url_as(static_format="png"))
         image = await self.get_img(url=image)
-        data = images.whodidthis(self, image)
+        data = await self.bot.loop.run_in_executor(None, images.whodidthis, self, image)
         await self.send_img(ctx, discord.File(data, "whodidthis.png"))
 
     @commands.command()
     async def whothisis(
-        self,
-        ctx,
-        user: typing.Optional[discord.Member],
-        username: commands.clean_content(fix_channel_mentions=True),
+            self,
+            ctx,
+            user: typing.Optional[discord.Member],
+            username: commands.clean_content(fix_channel_mentions=True),
     ):
         """who this is."""
         user = user or ctx.author
-        data = images.whothisis(self, await self.get_img(url=str(user.avatar_url_as(static_format="png"))), username)
+        data = await self.bot.loop.run_in_executor(None, images.whothisis, self,
+                                                   await self.get_img(url=str(user.avatar_url_as(static_format="png"))),
+                                                   username)
         await self.send_img(ctx, discord.File(data, "whothisis.png"))
 
     @commands.command()
@@ -1028,17 +1043,18 @@ class DankMemer(commands.Cog):
 
     @commands.command()
     async def youtube(
-        self,
-        ctx,
-        user: typing.Optional[discord.Member] = None,
-        *,
-        text: commands.clean_content(fix_channel_mentions=True),
+            self,
+            ctx,
+            user: typing.Optional[discord.Member] = None,
+            *,
+            text: commands.clean_content(fix_channel_mentions=True),
     ):
         """Create a youtube comment."""
         user = user or ctx.author
-        data = images.youtube(
-            self, await self.get_img(url=str(user.avatar_url_as(static_format="png"))), user.name, text
-        )
+        data = await self.bot.loop.run_in_executor(None, images.youtube, self,
+                                                   await self.get_img(url=str(user.avatar_url_as(static_format="png"))),
+                                                   user.name, text
+                                                   )
         await self.send_img(ctx, discord.File(data, "youtube.png"))
 
     # New Endpoints
@@ -1049,11 +1065,11 @@ class DankMemer(commands.Cog):
 
         Text must be 5 comma seperated values.
         """
-        data = images.expandingwwe(self, text)
+        data = await self.bot.loop.run_in_executor(None, images.expandingwwe, self, text)
         await self.send_img(ctx, discord.File(data, "expandingwwe.png"))
 
 
 def chunks(l, n):
     """Yield successive n-sized chunks from l."""
     for i in range(0, len(l), n):
-        yield l[i : i + n]
+        yield l[i: i + n]
