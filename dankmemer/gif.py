@@ -6,7 +6,7 @@ from random import randint
 from redbot.core.data_manager import bundled_data_path
 
 
-async def airpods(self, avatar):
+def airpods(self, avatar):
     blank = Image.new("RGBA", (400, 128), (255, 255, 255, 0))
     avatar = Image.open(avatar).convert("RGBA").resize((128, 128))
     left = Image.open(f"{bundled_data_path(self)}/images/airpods_left.gif")
@@ -39,7 +39,7 @@ async def airpods(self, avatar):
     return b
 
 
-async def america(self, avatar):
+def america(self, avatar):
     img1 = Image.open(avatar).convert("RGBA").resize((480, 480))
     img2 = Image.open(f"{bundled_data_path(self)}/images/america.gif")
     img1.putalpha(128)
@@ -66,7 +66,7 @@ async def america(self, avatar):
     return b
 
 
-async def communism(self, avatar):
+def communism(self, avatar):
     img1 = Image.open(avatar).convert("RGBA").resize((300, 300))
     img2 = Image.open(f"{bundled_data_path(self)}/images/communism.gif")
     img1.putalpha(96)
@@ -94,7 +94,7 @@ async def communism(self, avatar):
     return b
 
 
-async def dank(self, avatar):
+def dank(self, avatar):
     avatar = Image.open(avatar).resize((320, 320)).convert("RGBA")
 
     horn = (
@@ -156,7 +156,7 @@ async def dank(self, avatar):
     return b
 
 
-async def trigger(self, avatar):
+def trigger(self, avatar):
     avatar = Image.open(avatar).resize((320, 320)).convert("RGBA")
     triggered = Image.open(f"{bundled_data_path(self)}/images/triggered_triggered.png")
     tint = Image.open(f"{bundled_data_path(self)}/images/triggered_red.png").convert("RGBA")

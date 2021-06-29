@@ -6,7 +6,7 @@ from moviepy.video.fx.rotate import rotate
 from redbot.core.data_manager import bundled_data_path
 
 
-async def kowalski(self, text):
+def kowalski(self, text):
     name = f"{bundled_data_path(self)}/{uuid.uuid4().hex}.gif"
 
     clip = VideoFileClip(f"{bundled_data_path(self)}/images/kowalski.gif")
@@ -32,7 +32,7 @@ async def kowalski(self, text):
     return name
 
 
-async def letmein(self, text):
+def letmein(self, text):
     name = f"{bundled_data_path(self)}/{uuid.uuid4().hex}"
     name_mp4 = name + ".mp4"
     name_mp3 = name + ".mp3"
