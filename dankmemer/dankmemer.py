@@ -3,6 +3,7 @@
 from io import BytesIO
 import os
 import typing
+import functools
 
 import aiohttp
 import discord
@@ -520,7 +521,7 @@ class DankMemer(commands.Cog):
         if image is None:
             image = str(ctx.author.avatar_url_as(static_format="png"))
         image = await self.get_img(url=image)
-        data = await self.bot.loop.run_in_executor(None, images.jail, self, image)
+        data = await self.bot.loop.run_in_executor(None, functools.partial(images.jail, self, image))
         await self.send_img(ctx, discord.File(data, "jail.png"))
 
     @commands.command()
