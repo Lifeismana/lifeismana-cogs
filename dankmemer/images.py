@@ -751,7 +751,7 @@ def garfield(self, avatar, text):
 
 def gay(self, avatar):
     img1 = Image.open(avatar).convert("RGBA")
-    img2 = Image.open(f"{bundled_data_path(self)}/gay/gay.png").convert("RGBA").resize(img1.size)
+    img2 = Image.open(f"{bundled_data_path(self)}/gay.png").convert("RGBA").resize(img1.size)
     img2.putalpha(128)
     img1.paste(img2, (0, 0), img2)
     img1 = img1.convert("RGB")
@@ -1244,23 +1244,23 @@ def nothing(self, text):
     return b
 
 
-def obama(self, avatar, usernames):
+def obama(self, avatar, username):
     base = Image.open(f"{bundled_data_path(self)}/images/obama.jpg")
     font = ImageFont.truetype(f"{bundled_data_path(self)}/fonts/arimobold.ttf", size=36)
     canv = ImageDraw.Draw(base)
 
     avatar = Image.open(avatar).resize((200, 200), Image.LANCZOS).convert("RGBA")
 
-    w, _ = canv.textsize(wrap(font, usernames[0], 400), font)
+    w, _ = canv.textsize(wrap(font, username, 400), font)
 
     base.paste(avatar, (120, 73), avatar)
     base.paste(avatar, (365, 0), avatar)
 
     render_text_with_emoji(
-        self, base, canv, (int(210 - (w / 2)), 400), wrap(font, usernames[0], 400), font, "white"
+        self, base, canv, (int(210 - (w / 2)), 400), wrap(font, username, 400), font, "white"
     )
     render_text_with_emoji(
-        self, base, canv, (int(470 - (w / 2)), 300), wrap(font, usernames[0], 400), font, "white"
+        self, base, canv, (int(470 - (w / 2)), 300), wrap(font, username, 400), font, "white"
     )
 
     base = base.convert("RGB")
@@ -1657,7 +1657,7 @@ def surprised(self, text):
     return b
 
 
-def sword(self, usernames, text):
+def sword(self, username, text):
     text = text.replace(", ", ",").split(",")
     if len(text) != 2:
         text = ["SPLIT BY", "COMMA"]
@@ -1671,7 +1671,7 @@ def sword(self, usernames, text):
     temp_draw = ImageDraw.Draw(temp)
     render_text_with_emoji(self, temp, temp_draw, (0, 0), swordtext, font=font, fill="White")
     temp = temp.rotate(-25, expand=1)
-    render_text_with_emoji(self, base, canv, (330, 330), usernames[0], font=font, fill="White")
+    render_text_with_emoji(self, base, canv, (330, 330), username, font=font, fill="White")
 
     base.paste(temp, (-30, 605), temp)
 
@@ -1796,7 +1796,7 @@ def tweet(self, avatar, username0, username1, text):
 
 
 def ugly(self, avatar):
-    base = Image.open(f"{bundled_data_path(self)}/ugly/ugly.png").convert("RGBA")
+    base = Image.open(f"{bundled_data_path(self)}/ugly.png").convert("RGBA")
     avatar = Image.open(avatar).resize((175, 175)).convert("RGBA")
     base.paste(avatar, (120, 55), avatar)
     base = base.convert("RGBA")
@@ -1968,7 +1968,7 @@ def whothisis(self, avatar, text):
 def youtube(self, avatar, text, username):
     avatar = Image.open(avatar).resize((52, 52)).convert("RGBA")
     name = username
-    base = Image.open(f"{bundled_data_path(self)}/youtube/youtube.png").convert("RGBA")
+    base = Image.open(f"{bundled_data_path(self)}/youtube.png").convert("RGBA")
     font = ImageFont.truetype(
         f"{bundled_data_path(self)}/fonts/robotomedium.ttf",
         size=17,

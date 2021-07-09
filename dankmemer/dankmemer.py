@@ -691,10 +691,9 @@ class DankMemer(commands.Cog):
         user: discord User, takes their avatar and display name.
         """
         user = user or ctx.author
-        data = await self.bot.loop.run_in_executor(None, images.obama, self,
-                                                   await self.get_img(url=str(user.avatar_url_as(static_format="png"))),
-                                                   user.display_name
-                                                   )
+        userPic = await self.get_img(url=str(user.avatar_url_as(static_format="png")))
+        data = await self.bot.loop.run_in_executor(None, functools.partial(images.obama, self,
+                                                   userPic, user.display_name))
         await self.send_img(ctx, discord.File(data, "obama.png"))
 
     @commands.command()
@@ -734,11 +733,10 @@ class DankMemer(commands.Cog):
     ):
         """Quote a discord user."""
         user = user or ctx.author
-        data = await self.bot.loop.run_in_executor(None, images.quote,
-                                                   self,
-                                                   await self.get_img(url=str(user.avatar_url_as(static_format="png"))),
-                                                   user.name, text
-                                                   )
+        userPic = await self.get_img(url=str(user.avatar_url_as(static_format="png")))
+        data = await self.bot.loop.run_in_executor(None, functools.partial(
+                                                   images.quote, self, userPic,
+                                                   user.display_name, text))
         await self.send_img(ctx, discord.File(data, "quote.png"))
 
     @commands.command()
