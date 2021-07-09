@@ -1968,7 +1968,7 @@ def whothisis(self, avatar, text):
 def youtube(self, avatar, text, username):
     avatar = Image.open(avatar).resize((52, 52)).convert("RGBA")
     name = username
-    base = Image.open(f"{bundled_data_path(self)}/youtube.png").convert("RGBA")
+    base = Image.open(f"{bundled_data_path(self)}/images/youtube.png").convert("RGBA")
     font = ImageFont.truetype(
         f"{bundled_data_path(self)}/fonts/robotomedium.ttf",
         size=17,
