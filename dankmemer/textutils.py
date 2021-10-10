@@ -2,7 +2,6 @@ from math import floor
 import os
 
 # TODO: Chop long single-words
-# from PIL import ImageFont
 from PIL import Image, ImageFont
 
 from redbot.core.data_manager import bundled_data_path
